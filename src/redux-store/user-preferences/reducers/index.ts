@@ -1,0 +1,1 @@
+export { userPreferencesReducer } from './reducer';

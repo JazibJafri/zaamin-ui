@@ -1,0 +1,12 @@
+node_modules
+
+__tests__
+
+__mocks__
+
+android
+
+ios
+
+*.test.js
+*.config.js
