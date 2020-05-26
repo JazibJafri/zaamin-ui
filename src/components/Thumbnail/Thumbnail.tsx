@@ -14,7 +14,9 @@ interface OwnProps extends WithDispatch {
     language: string;
 }
 
-export const Thumbnail = ({ dispatch }: OwnProps) => (
+type Props = OwnProps & WithTabNavigation;
+
+export const Thumbnail = ({ dispatch }: Props) => (
     <View>
         <RegularText style={[globalStyles.centerContent, ThumbnailStyles.title]}>
             THUMBNAIL.TEXT.HELLO_WORLD

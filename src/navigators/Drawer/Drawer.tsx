@@ -1,14 +1,14 @@
-import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-/* Absolute Imports */
-// import { TabNavigator } from 'navigators/Tab';
-import { MainComponent } from 'components/MainComponent';
+import { Main } from 'components/Main';
 
-const RootDrawerNavigator = createDrawerNavigator({
-    Home: MainComponent,
-});
+const Drawer = createDrawerNavigator();
 
-const DrawerNavigator = createAppContainer(RootDrawerNavigator);
+const DrawerNavigator: React.FC = () => (
+    <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={Main} />
+    </Drawer.Navigator>
+);
 
 export { DrawerNavigator };

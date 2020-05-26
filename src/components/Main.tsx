@@ -6,11 +6,13 @@ import { TabNavigator } from 'navigators/Tab';
 import { Header } from 'components/Header';
 import { DEFAULT_LANGUAGE } from 'util/constants';
 
-interface OwnProps extends WithDrawerNavigation {
+interface OwnProps {
     userPreferencesReducer: UserPreferences;
 }
 
-const MainComponent = ({ navigation, userPreferencesReducer }: OwnProps) => (
+type Props = OwnProps & WithDrawerNavigation;
+
+const Main = ({ navigation }: Props) => (
     <>
         <Header openDrawer={navigation.openDrawer}>React App</Header>
         <TabNavigator />
@@ -20,6 +22,6 @@ const MainComponent = ({ navigation, userPreferencesReducer }: OwnProps) => (
 const mapStateToProps = (state: RootState) => ({
     userPreferencesReducer: state.userPreferencesReducer,
 });
-const Main = connect(mapStateToProps)(MainComponent);
+const MainComponent = connect(mapStateToProps)(Main);
 
-export { Main as MainComponent };
+export { MainComponent as Main };

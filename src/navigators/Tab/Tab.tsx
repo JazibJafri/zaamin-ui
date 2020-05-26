@@ -1,39 +1,19 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 /* Absolute Imports */
 import { ThumbnailDecorated } from 'components/Thumbnail';
+import { View, Text } from 'react-native';
 
-const RootTabNavigator = createBottomTabNavigator(
-    {
-        Sample: ThumbnailDecorated,
-    },
-    {
-        defaultNavigationOptions: ({ navigation }) => ({
-            tabBarIcon: ({ /* focused, horizontal, */ tintColor }) => {
-                const { routeName } = navigation.state;
-                const iconName = routeName === 'Sample' ? 'texture' : 'photo';
-                return <MaterialIcons name={iconName} size={25} color={tintColor} />;
-            },
-        }),
-        tabBarOptions: {
-            style: {},
-            activeBackgroundColor: '#ffffff',
-            inactiveBackgroundColor: '#cccccc',
-            activeTintColor: '#000000',
-            inactiveTintColor: '#808080',
+const Tab = createBottomTabNavigator();
 
-            /* indicatorStyle:{
-            backgroundColor:'blue'
-        }, */
-            showLabel: false,
-            showIcon: true,
-        },
-    },
-);
-
-const TabNavigator = createAppContainer(RootTabNavigator);
+const TabNavigator = () => {
+    return (
+        <Tab.Navigator>
+            <Tab.Screen name="Tab1" component={ThumbnailDecorated} />
+        </Tab.Navigator>
+    );
+};
 
 export { TabNavigator };
