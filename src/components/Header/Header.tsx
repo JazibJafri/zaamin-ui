@@ -1,18 +1,15 @@
 import React from 'react';
-import { Text, TextInput } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-/* Absolute imports */
-import { HeaderStyles } from 'components/Header/Header.styles';
-import { WrappedView } from 'components/Wrapped/WrappedView';
+import { HeaderStyles } from './Header.styles';
 
 interface OwnProps {
-    children: JSX.Element | string;
     openDrawer: () => void;
 }
 
-const Header = ({ children, openDrawer }: OwnProps) => (
-    <WrappedView style={HeaderStyles.header}>
+const Header: React.FC<OwnProps> = ({ children, openDrawer }) => (
+    <View style={HeaderStyles.header}>
         <MaterialIcons
             name="menu"
             size={26}
@@ -21,7 +18,7 @@ const Header = ({ children, openDrawer }: OwnProps) => (
         />
         <Text style={HeaderStyles.headerText}>{children}</Text>
         <TextInput style={HeaderStyles.searchField} placeholder="Search" />
-    </WrappedView>
+    </View>
 );
 
 export { Header };

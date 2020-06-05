@@ -1,27 +1,16 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
 /* Absolute Imports */
-import { TabNavigator } from 'navigators/Tab';
+import { TabNavigator } from 'navigators/Tabs';
 import { Header } from 'components/Header';
-import { DEFAULT_LANGUAGE } from 'util/constants';
 
-interface OwnProps {
-    userPreferencesReducer: UserPreferences;
-}
+type Props = WithDrawerNavigation;
 
-type Props = OwnProps & WithDrawerNavigation;
-
-const Main = ({ navigation }: Props) => (
+const Main: React.FC<Props> = ({ navigation }) => (
     <>
-        <Header openDrawer={navigation.openDrawer}>React App</Header>
+        <Header openDrawer={navigation.openDrawer}>Zaamin</Header>
         <TabNavigator />
     </>
 );
 
-const mapStateToProps = (state: RootState) => ({
-    userPreferencesReducer: state.userPreferencesReducer,
-});
-const MainComponent = connect(mapStateToProps)(Main);
-
-export { MainComponent as Main };
+export { Main };

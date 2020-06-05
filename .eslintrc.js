@@ -55,7 +55,7 @@ module.exports = exports = {
         'no-labels': ERROR,
         'no-lone-blocks': ERROR,
         'no-loop-func': ERROR,
-        'no-magic-numbers': ERROR,
+        'no-magic-numbers': OFF,
         'no-multi-spaces': ERROR,
         'no-multi-str': ERROR,
         'no-global-assign': ERROR,
@@ -88,13 +88,13 @@ module.exports = exports = {
         // If we NEED a var to be initialized to undefined, it needs to be explicit
         'no-undef-init': ERROR,
         'no-undef': ERROR,
-        'no-undefined': ERROR,
+        'no-undefined': OFF,
         // Disallow hoisting - let & const don't allow hoisting anyhow
         'no-use-before-define': ERROR,
 
         // Node.js and CommonJS
         'callback-return': [ERROR, ['callback', 'cb', 'next']],
-        'global-require': ERROR,
+        'global-require': OFF,
         'handle-callback-err': [ERROR, 'err'],
         'no-new-require': ERROR,
         // Use path.concat instead

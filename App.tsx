@@ -13,20 +13,22 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import { NavigationContainer } from '@react-navigation/native';
 
 /* Absolute Import */
 import { initStore, persistor } from 'redux-store';
-import { NavigationContainer } from '@react-navigation/native';
-import { DrawerNavigator } from 'navigators/Drawer';
+import { RootStackNavigator } from 'navigators/Stacks/RootStack';
+import { Greeting } from 'components/Greeting';
 
 const App: React.FC = () => (
     <>
         <Provider store={initStore}>
             <PersistGate loading={null} persistor={persistor}>
                 <StatusBar barStyle="dark-content" />
-                <NavigationContainer>
-                    <DrawerNavigator />
-                </NavigationContainer>
+                <Greeting />
+                {/* <NavigationContainer>
+                    <RootStackNavigator />
+                </NavigationContainer> */}
             </PersistGate>
         </Provider>
     </>

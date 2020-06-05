@@ -5,11 +5,14 @@ export const globalStyles = StyleSheet.create({
     centerContent: {
         alignItems: 'center',
         justifyContent: 'center',
-        alignSelf: 'center',
     },
     flexFullRow: {
         flex: 1,
         flexDirection: 'row',
+    },
+    flexFullColumn: {
+        flex: 1,
+        flexDirection: 'column',
     },
     leftHalfScreen: {
         alignSelf: 'flex-start',
@@ -27,5 +30,9 @@ export const globalStyles = StyleSheet.create({
     },
     defaultButtonTitle: {
         fontSize: 13,
+    },
+    border: {
+        // borderWidth: 2,
+        // borderColor: 'red',
     },
 });

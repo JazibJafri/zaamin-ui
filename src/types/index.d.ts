@@ -1,14 +1,3 @@
-declare interface ButtonProps {
-    onPress: () => unknown;
-    title: string;
-    styles?: {
-        button?: object;
-        title?: object;
-    };
-}
-
-declare type ButtonStyleType = Pick<ButtonProps, 'styles'>;
-
 declare interface RequestParams {
     url: string;
     path: string;

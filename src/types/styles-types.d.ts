@@ -1,5 +1,13 @@
-declare module '*.scss' {
-    // eslint-disable-next-line init-declarations
-    const content: { [className: string]: string };
-    export = content;
+import { ViewStyle, ImageStyle, TextStyle } from 'react-native';
+
+declare global {
+    interface ButtonProps {
+        onPress: () => unknown;
+        title: string;
+        styles?: {
+            button?: ViewStyle;
+            title?: TextStyle;
+        };
+    }
+    type ButtonStyleType = Pick<ButtonProps, 'styles'>;
 }

@@ -12,7 +12,11 @@ const defaultButton: ButtonStyleType = {
     },
 };
 
-const Button = ({ onPress, title, styles = defaultButton.styles }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({
+    onPress,
+    title,
+    styles = defaultButton.styles,
+}) => {
     const { button, title: caption } = StyleSheet.create({
         ...styles,
     });

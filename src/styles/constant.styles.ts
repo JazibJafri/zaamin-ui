@@ -15,3 +15,8 @@ export const fontColors = {
     black: '#000',
     white: '#fff',
 };
+
+export const logoColors = {
+    blue: '#1b4261',
+    orange: '#de8c2a',
+};
