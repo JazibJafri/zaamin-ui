@@ -37,9 +37,11 @@ export const GreetingStyles = StyleSheet.create({
     },
     welcomeText: {
         fontSize: 30,
+        fontFamily: 'Oswald-Regular',
     },
     signupText: {
         fontSize: 14,
+        fontFamily: 'Oswald-ExtraLight',
     },
     buttonsView: {
         marginTop: 15,
@@ -58,6 +60,7 @@ export const GreetingStyles = StyleSheet.create({
     buttonText: {
         fontSize: 16,
         color: colors.white,
+        fontFamily: 'Oswald-Regular',
     },
     leftButton: {
         borderRightColor: logoColors.orange,
