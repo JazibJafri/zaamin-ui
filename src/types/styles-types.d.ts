@@ -1,4 +1,4 @@
-import { ViewStyle, ImageStyle, TextStyle } from 'react-native';
+import { ViewStyle, ImageStyle, TextStyle, StyleProp, TextProps } from 'react-native';
 
 declare global {
     interface ButtonProps {
@@ -10,4 +10,8 @@ declare global {
         };
     }
     type ButtonStyleType = Pick<ButtonProps, 'styles'>;
+
+    interface WithTextProps extends TextProps {
+        size?: FontTypes;
+    }
 }

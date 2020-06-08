@@ -19,16 +19,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { initStore, persistor } from 'redux-store';
 import { RootStackNavigator } from 'navigators/Stacks/RootStack';
 import { Greeting } from 'components/Greeting';
+import { FontContextProvider } from 'contexts/FontContext';
 
 const App: React.FC = () => (
     <>
         <Provider store={initStore}>
             <PersistGate loading={null} persistor={persistor}>
-                <StatusBar barStyle="dark-content" />
-                <Greeting />
-                {/* <NavigationContainer>
+                <FontContextProvider>
+                    <StatusBar barStyle="dark-content" />
+                    <Greeting />
+                    {/* <NavigationContainer>
                     <RootStackNavigator />
                 </NavigationContainer> */}
+                </FontContextProvider>
             </PersistGate>
         </Provider>
     </>

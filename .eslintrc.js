@@ -172,7 +172,16 @@ module.exports = exports = {
         'space-before-function-paren': OFF,
         'space-in-parens': [ERROR, 'never'],
         'space-infix-ops': ERROR,
-        'space-unary-ops': [ERROR, { words: true, nonwords: true }],
+        'space-unary-ops': [
+            ERROR,
+            {
+                words: true,
+                nonwords: true,
+                overrides: {
+                    '!': false,
+                },
+            },
+        ],
         'wrap-regex': ERROR,
     },
     overrides: [

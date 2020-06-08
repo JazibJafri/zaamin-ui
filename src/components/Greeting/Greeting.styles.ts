@@ -19,28 +19,13 @@ export const GreetingStyles = StyleSheet.create({
         height: undefined,
         resizeMode: 'contain',
     },
-    logoView: {
-        ...border,
-        ...flexFullColumn,
-        ...centerContent,
-        backgroundColor: logoColors.orange,
-    },
-    logoText: {
-        color: logoColors.blue,
-        fontSize: 30,
-    },
     titleView: {
         ...flexFullColumn,
         ...centerContent,
         flex: 3,
         ...border,
     },
-    welcomeText: {
-        fontSize: 30,
-        fontFamily: 'Oswald-Regular',
-    },
     signupText: {
-        fontSize: 14,
         fontFamily: 'Oswald-ExtraLight',
     },
     buttonsView: {
@@ -58,9 +43,7 @@ export const GreetingStyles = StyleSheet.create({
         ...border,
     },
     buttonText: {
-        fontSize: 16,
         color: colors.white,
-        fontFamily: 'Oswald-Regular',
     },
     leftButton: {
         borderRightColor: logoColors.orange,

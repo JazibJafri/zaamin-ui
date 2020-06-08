@@ -1,25 +1,25 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { GreetingStyles, leftButton, rightButton, middleButton } from './Greeting.styles';
 import { Button } from 'components/Button';
 import { Images } from 'images';
+import { RegularText } from 'components/RegularText';
+
+const { container, imgView, image, titleView, signupText, buttonsView } = GreetingStyles;
 
 const Greeting: React.FC = () => {
     return (
-        <View style={GreetingStyles.container}>
-            <View style={GreetingStyles.imgView}>
-                <Image source={Images.logo} style={GreetingStyles.image} />
+        <View style={container}>
+            <View style={imgView}>
+                <Image source={Images.logo} style={image} />
             </View>
-            {/* <View style={GreetingStyles.logoView}>
-                <Text style={GreetingStyles.logoText}>Zaamin</Text>
-            </View> */}
-            <View style={GreetingStyles.titleView}>
-                <Text style={GreetingStyles.welcomeText}>Welcome</Text>
-                <Text style={GreetingStyles.signupText}>
+            <View style={titleView}>
+                <RegularText size="huge">Welcome</RegularText>
+                <RegularText size="medium" style={signupText}>
                     Select how you want to signup
-                </Text>
+                </RegularText>
             </View>
-            <View style={GreetingStyles.buttonsView}>
+            <View style={buttonsView}>
                 <Button styles={leftButton} title="Parent" onPress={() => null} />
                 <Button styles={middleButton} title="Transporter" onPress={() => null} />
                 <Button styles={rightButton} title="School" onPress={() => null} />
