@@ -1,15 +1,18 @@
-import React from 'react';
-import { Text, TextProps, StyleProp, TextStyle } from 'react-native';
+import React, { useContext } from 'react';
+import { Text, StyleSheet } from 'react-native';
+import { FontContext } from 'contexts/FontContext';
 
-interface OwnProps extends TextProps {
-    style?: StyleProp<TextStyle>;
-}
-
-const RegularText: React.FC<OwnProps> = props => {
-    const { style: textStyles, children, ...rest } = props;
-    const style = [textStyles];
+const RegularText: React.FC<WithTextProps> = props => {
+    const { style, children, size, ...rest } = props;
+    const { font, fontSize, fontFamily } = useContext(FontContext);
+    const textStyles = StyleSheet.create({
+        text: {
+            fontSize: font.size[size || fontSize],
+            fontFamily: `${font.name}-${font.family[fontFamily]}`,
+        },
+    });
     return (
-        <Text style={style} {...rest}>
+        <Text style={[textStyles.text, style]} {...rest}>
             {children}
         </Text>
     );
