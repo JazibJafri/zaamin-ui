@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import { FontContext } from 'contexts/FontContext';
 
 const RegularText: React.FC<WithTextProps> = props => {

@@ -32,7 +32,7 @@ export const globalStyles = StyleSheet.create({
         fontSize: 13,
     },
     border: {
-        // borderWidth: 2,
-        // borderColor: 'red',
+        borderWidth: 2,
+        borderColor: 'red',
     },
 });

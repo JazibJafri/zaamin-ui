@@ -20,9 +20,9 @@ const Greeting: React.FC = () => {
                 </RegularText>
             </View>
             <View style={buttonsView}>
-                <Button styles={leftButton} title="Parent" onPress={() => null} />
-                <Button styles={middleButton} title="Transporter" onPress={() => null} />
-                <Button styles={rightButton} title="School" onPress={() => null} />
+                <Button style={leftButton} title="Parent" onPress={() => null} />
+                <Button style={middleButton} title="Transporter" onPress={() => null} />
+                <Button style={rightButton} title="School" onPress={() => null} />
             </View>
         </View>
     );

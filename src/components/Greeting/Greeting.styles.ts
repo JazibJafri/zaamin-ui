@@ -7,7 +7,6 @@ const { border, centerContent, flexFullColumn, flexFullRow } = globalStyles;
 export const GreetingStyles = StyleSheet.create({
     container: {
         ...flexFullColumn,
-        ...border,
     },
     imgView: {
         ...flexFullRow,
@@ -23,7 +22,6 @@ export const GreetingStyles = StyleSheet.create({
         ...flexFullColumn,
         ...centerContent,
         flex: 3,
-        ...border,
     },
     signupText: {
         fontFamily: 'Oswald-ExtraLight',
@@ -33,14 +31,12 @@ export const GreetingStyles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         flex: 6,
-        ...border,
     },
     buttonStyle: {
         ...centerContent,
         width: 100,
         height: 60,
         backgroundColor: logoColors.blue,
-        ...border,
     },
     buttonText: {
         color: colors.white,
