@@ -7,7 +7,7 @@ import { RegularText } from 'components/RegularText';
 
 const { container, imgView, image, titleView, signupText, buttonsView } = GreetingStyles;
 
-const Greeting: React.FC = () => {
+const Greeting: React.FC<WithStackNavigation<'Greeting'>> = ({ navigation }) => {
     return (
         <View style={container}>
             <View style={imgView}>
@@ -20,9 +20,21 @@ const Greeting: React.FC = () => {
                 </RegularText>
             </View>
             <View style={buttonsView}>
-                <Button style={leftButton} title="Parent" onPress={() => null} />
-                <Button style={middleButton} title="Transporter" onPress={() => null} />
-                <Button style={rightButton} title="School" onPress={() => null} />
+                <Button
+                    style={leftButton}
+                    title="Parent"
+                    onPress={() => navigation.navigate('Login')}
+                />
+                <Button
+                    style={middleButton}
+                    title="Transporter"
+                    onPress={() => navigation.navigate('Login')}
+                />
+                <Button
+                    style={rightButton}
+                    title="School"
+                    onPress={() => navigation.navigate('Login')}
+                />
             </View>
         </View>
     );

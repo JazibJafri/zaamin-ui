@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Greeting } from 'components/Greeting';
 import { AppUsage } from 'components/AppUsage';
+import { Login } from 'components/Login';
 
 const RootStack = createStackNavigator();
 
@@ -16,6 +17,13 @@ const RootStackNavigator = () => {
             <RootStack.Screen
                 name="Greeting"
                 component={Greeting}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <RootStack.Screen
+                name="Login"
+                component={Login}
                 options={{
                     headerShown: false,
                 }}

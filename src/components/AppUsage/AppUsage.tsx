@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Image } from 'react-native';
 import { Images } from 'images';
 import { Button } from 'components/Button';
@@ -10,7 +10,6 @@ const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => 
         size: 25,
         style: AppUsageStyles.icon,
     };
-    const [selected, setSelected] = useState('');
     return (
         <View style={AppUsageStyles.container}>
             <View style={AppUsageStyles.imageView}>
@@ -26,7 +25,7 @@ const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => 
                 />
                 <Button
                     title="Picnic"
-                    onPress={() => setSelected('picnic')}
+                    onPress={() => navigation.navigate('Login')}
                     style={buttons}
                     size="large"
                     icon={icon}

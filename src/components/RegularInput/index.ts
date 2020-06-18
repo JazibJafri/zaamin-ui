@@ -1,0 +1,1 @@
+export { RegularInput } from './RegularInput';
