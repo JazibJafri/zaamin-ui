@@ -1,18 +1,14 @@
 import React from 'react';
-import { View, Image } from 'react-native';
-import { GreetingStyles, leftButton, rightButton, middleButton } from './Greeting.styles';
+import { View } from 'react-native';
+import { WelcomeStyles, leftButton, rightButton, middleButton } from './Welcome.styles';
 import { Button } from 'components/Button';
-import { Images } from 'images';
 import { RegularText } from 'components/RegularText';
 
-const { container, imgView, image, titleView, signupText, buttonsView } = GreetingStyles;
+const { container, titleView, signupText, buttonsView } = WelcomeStyles;
 
-const Greeting: React.FC<WithStackNavigation<'Greeting'>> = ({ navigation }) => {
+const Welcome: React.FC<WithStackNavigation<'Welcome'>> = ({ navigation }) => {
     return (
         <View style={container}>
-            <View style={imgView}>
-                <Image source={Images.logo} style={image} />
-            </View>
             <View style={titleView}>
                 <RegularText size="huge">Welcome</RegularText>
                 <RegularText size="medium" style={signupText}>
@@ -23,21 +19,21 @@ const Greeting: React.FC<WithStackNavigation<'Greeting'>> = ({ navigation }) => 
                 <Button
                     style={leftButton}
                     title="Parent"
-                    onPress={() => navigation.navigate('Login')}
+                    onPress={() => navigation.navigate('AuthForm', { isSignUp: true })}
                 />
                 <Button
                     style={middleButton}
                     title="Transporter"
-                    onPress={() => navigation.navigate('Login')}
+                    onPress={() => navigation.navigate('AuthForm', { isSignUp: true })}
                 />
                 <Button
                     style={rightButton}
                     title="School"
-                    onPress={() => navigation.navigate('Login')}
+                    onPress={() => navigation.navigate('AuthForm', { isSignUp: true })}
                 />
             </View>
         </View>
     );
 };
 
-export { Greeting };
+export { Welcome };

@@ -16,8 +16,8 @@ declare global {
 
     type RootStackParamList = {
         AppUsage: undefined;
-        Greeting: undefined;
-        Login: undefined;
+        Welcome: undefined;
+        AuthForm: { isSignUp?: boolean };
     };
 
     type WithStackNavigation<

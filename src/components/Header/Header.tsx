@@ -1,23 +1,18 @@
 import React from 'react';
-import { Text, TextInput, View } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { View } from 'react-native';
 
 import { HeaderStyles } from './Header.styles';
+import { RegularText } from 'components/RegularText';
 
 interface OwnProps {
-    openDrawer: () => void;
+    title?: string;
 }
 
-const Header: React.FC<OwnProps> = ({ children, openDrawer }) => (
+const Header: React.FC<OwnProps> = ({ title }) => (
     <View style={HeaderStyles.header}>
-        <MaterialIcons
-            name="menu"
-            size={26}
-            onPress={() => openDrawer()}
-            style={HeaderStyles.icon}
-        />
-        <Text style={HeaderStyles.headerText}>{children}</Text>
-        <TextInput style={HeaderStyles.searchField} placeholder="Search" />
+        <RegularText size="large" style={HeaderStyles.headerText}>
+            {title}
+        </RegularText>
     </View>
 );
 

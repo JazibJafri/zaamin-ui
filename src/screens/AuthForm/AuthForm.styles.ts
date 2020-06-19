@@ -4,7 +4,7 @@ import { globalStyles } from 'styles/app.styles';
 
 const { border, centerContent, flexFullColumn, flexFullRow } = globalStyles;
 
-export const LoginStyles = StyleSheet.create({
+export const AuthFormStyles = StyleSheet.create({
     container: {
         ...flexFullColumn,
         // ...border,
@@ -12,6 +12,7 @@ export const LoginStyles = StyleSheet.create({
     imageView: {
         ...flexFullRow,
         // ...border,
+        height: 70,
     },
     image: {
         flex: 1,
@@ -19,8 +20,9 @@ export const LoginStyles = StyleSheet.create({
         resizeMode: 'contain',
     },
     heading: {
-        flex: 1,
         ...centerContent,
+        flex: 1,
+        height: 70,
     },
     title: {
         color: logoColors.blue,
@@ -30,6 +32,7 @@ export const LoginStyles = StyleSheet.create({
         ...flexFullRow,
         // ...border,
         ...centerContent,
+        height: 70,
     },
     socialButtonStyle: {
         // ...border,
@@ -60,14 +63,12 @@ export const LoginStyles = StyleSheet.create({
         borderColor: logoColors.blue,
         borderRadius: 5,
     },
-    loginButton: {
+    submitButton: {
         // ...border,
-        ...flexFullRow,
-        alignItems: 'flex-start',
+        ...flexFullColumn,
     },
-    loginButtonStyle: {
+    submitButtonStyle: {
         // ...border,
-        ...flexFullRow,
         ...centerContent,
         height: 40,
         marginHorizontal: 10,
@@ -75,17 +76,32 @@ export const LoginStyles = StyleSheet.create({
         backgroundColor: logoColors.blue,
         borderRadius: 30,
     },
-    loginButtonText: {
+    submitButtonText: {
         color: colors.white,
+    },
+    messageView: {
+        ...flexFullRow,
+        paddingHorizontal: 10,
+    },
+    messageButtonStyle: {
+        marginLeft: 5,
+    },
+    messageButtonText: {
+        color: logoColors.blue,
     },
 });
 
-export const socialButtons = {
-    title: LoginStyles.socialButtonText,
-    button: LoginStyles.socialButtonStyle,
+export const messageButton = {
+    button: AuthFormStyles.messageButtonStyle,
+    title: AuthFormStyles.messageButtonText,
 };
 
-export const loginButton = {
-    title: LoginStyles.loginButtonText,
-    button: LoginStyles.loginButtonStyle,
+export const socialButtons = {
+    title: AuthFormStyles.socialButtonText,
+    button: AuthFormStyles.socialButtonStyle,
+};
+
+export const submitButton = {
+    title: AuthFormStyles.submitButtonText,
+    button: AuthFormStyles.submitButtonStyle,
 };

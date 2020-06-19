@@ -13,6 +13,7 @@ export const AppUsageStyles = StyleSheet.create({
         alignItems: 'flex-end',
         paddingHorizontal: 40,
         paddingBottom: 10,
+        // ...border,
     },
     image: {
         flex: 1,
@@ -20,7 +21,7 @@ export const AppUsageStyles = StyleSheet.create({
         // ...border,
     },
     buttonView: {
-        ...flexFullColumn,
+        flex: 1,
         // ...border,
         paddingTop: 10,
         paddingHorizontal: 40,

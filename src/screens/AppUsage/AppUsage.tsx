@@ -18,14 +18,14 @@ const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => 
             <View style={AppUsageStyles.buttonView}>
                 <Button
                     title="School"
-                    onPress={() => navigation.navigate('Greeting')}
+                    onPress={() => navigation.navigate('Welcome')}
                     style={buttons}
                     size="large"
                     icon={icon}
                 />
                 <Button
                     title="Picnic"
-                    onPress={() => navigation.navigate('Login')}
+                    onPress={() => navigation.navigate('AuthForm', { isSignUp: true })}
                     style={buttons}
                     size="large"
                     icon={icon}
