@@ -4,33 +4,20 @@ import { globalStyles } from 'styles/app.styles';
 
 const { border, centerContent, flexFullColumn, flexFullRow } = globalStyles;
 
-export const GreetingStyles = StyleSheet.create({
+export const WelcomeStyles = StyleSheet.create({
     container: {
         ...flexFullColumn,
-    },
-    imgView: {
-        ...flexFullRow,
-        backgroundColor: logoColors.orange,
-    },
-    image: {
-        flex: 1,
-        width: undefined,
-        height: undefined,
-        resizeMode: 'contain',
     },
     titleView: {
         ...flexFullColumn,
         ...centerContent,
-        flex: 3,
     },
     signupText: {
         fontFamily: 'Oswald-ExtraLight',
     },
     buttonsView: {
-        marginTop: 15,
+        ...flexFullRow,
         justifyContent: 'center',
-        flexDirection: 'row',
-        flex: 6,
     },
     buttonStyle: {
         ...centerContent,
@@ -56,15 +43,15 @@ export const GreetingStyles = StyleSheet.create({
 });
 
 export const middleButton = {
-    title: GreetingStyles.buttonText,
-    button: GreetingStyles.buttonStyle,
+    title: WelcomeStyles.buttonText,
+    button: WelcomeStyles.buttonStyle,
 };
 
 export const leftButton = {
-    title: GreetingStyles.buttonText,
-    button: { ...GreetingStyles.buttonStyle, ...GreetingStyles.leftButton },
+    title: WelcomeStyles.buttonText,
+    button: { ...WelcomeStyles.buttonStyle, ...WelcomeStyles.leftButton },
 };
 export const rightButton = {
-    title: GreetingStyles.buttonText,
-    button: { ...GreetingStyles.buttonStyle, ...GreetingStyles.rightButton },
+    title: WelcomeStyles.buttonText,
+    button: { ...WelcomeStyles.buttonStyle, ...WelcomeStyles.rightButton },
 };

@@ -163,7 +163,7 @@ module.exports = exports = {
         'operator-assignment': [ERROR, 'always'],
         'operator-linebreak': [ERROR, 'after'],
         'quote-props': [ERROR, 'consistent-as-needed'],
-        'quotes': [ERROR, 'single'],
+        'quotes': [OFF, 'single'],
         'semi-spacing': [ERROR, { before: false, after: true }],
         'semi': [ERROR, 'always'],
         'sort-vars': OFF,
@@ -179,6 +179,7 @@ module.exports = exports = {
                 nonwords: true,
                 overrides: {
                     '!': false,
+                    '-': false,
                 },
             },
         ],

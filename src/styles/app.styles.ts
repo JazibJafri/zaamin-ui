@@ -35,4 +35,11 @@ export const globalStyles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'red',
     },
+    defaultInput: {
+        borderWidth: 2,
+        borderColor: colors.black,
+        paddingVertical: 0,
+        fontFamily: 'Oswald-Medium',
+        fontSize: 15,
+    },
 });

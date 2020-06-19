@@ -4,7 +4,7 @@ import { Images } from 'images';
 import { Button } from 'components/Button';
 import { AppUsageStyles, buttons } from './AppUsage.styles';
 
-const AppUsage = () => {
+const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => {
     const icon = {
         name: 'keyboard-arrow-right',
         size: 25,
@@ -18,14 +18,14 @@ const AppUsage = () => {
             <View style={AppUsageStyles.buttonView}>
                 <Button
                     title="School"
-                    onPress={() => null}
+                    onPress={() => navigation.navigate('Welcome')}
                     style={buttons}
                     size="large"
                     icon={icon}
                 />
                 <Button
                     title="Picnic"
-                    onPress={() => null}
+                    onPress={() => navigation.navigate('AuthForm', { isSignUp: true })}
                     style={buttons}
                     size="large"
                     icon={icon}
