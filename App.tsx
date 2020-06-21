@@ -9,30 +9,35 @@
  */
 // This must be first import
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { NavigationContainer } from '@react-navigation/native';
+import SplashScreen from 'react-native-splash-screen';
 
 /* Absolute Import */
 import { initStore, persistor } from 'redux-store';
 import { RootStackNavigator } from 'navigators/Stacks/RootStack';
 import { FontContextProvider } from 'contexts/FontContext';
 
-const App: React.FC = () => (
-    <>
-        <Provider store={initStore}>
-            <PersistGate loading={null} persistor={persistor}>
-                <FontContextProvider>
-                    <StatusBar barStyle="dark-content" />
-                    <NavigationContainer>
-                        <RootStackNavigator />
-                    </NavigationContainer>
-                </FontContextProvider>
-            </PersistGate>
-        </Provider>
-    </>
-);
-
+const App: React.FC = () => {
+    useEffect(() => {
+        SplashScreen.hide();
+    }, []);
+    return (
+        <>
+            <Provider store={initStore}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <FontContextProvider>
+                        <StatusBar barStyle="default" />
+                        <NavigationContainer>
+                            <RootStackNavigator />
+                        </NavigationContainer>
+                    </FontContextProvider>
+                </PersistGate>
+            </Provider>
+        </>
+    );
+};
 export default App;

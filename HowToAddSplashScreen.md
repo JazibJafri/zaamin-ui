@@ -56,7 +56,7 @@
     ```
     <?xml version="1.0" encoding="utf-8"?>
     <resources>
-        <color name="blue">#4F6D7A</color>
+        <color name="blue">#1b4261</color>
     </resources>
     ```
 
@@ -167,7 +167,7 @@
 
 ## 7. Go inside your package android/app/src/main/java/com/{your-package}
 
-    You will find `MainActivity.java` in this folder, here create 
+    You will find `MainActivity.java` in this folder, here create
     a new file `SplashActivity.java` and add this
 
     ```
@@ -207,7 +207,7 @@
     ```
     implementation 'androidx.appcompat:appcompat:1.0.0'
     ```
-    
+
     in dependencies, like
 
     ```
@@ -221,7 +221,7 @@
     ```
 
 ## 7.2 If you are using androidv7
-    
+
     Go to android/app/build.gradle
 
     Add
@@ -229,7 +229,7 @@
     ```
     compile 'com.android.support:appcompat-v7:28.0.0
     ```
-    
+
     in dependencies, like
 
     ```
@@ -247,8 +247,132 @@
     Restart build, let the metro bundler finish when it opens your app, after you see
     your first screen (not the splash screen), close and clear the app. Reopen it.
 
-    You should now see your splash screen
+    You should now see your splash screen, and then a white screen.
+    If you want to fix this white screen, keep reading
 
+## 9. Install `react-native-splash-screen@3.2.0`
+
+## 10. Display a second same splash screen instead of the white screen
+
+    Inside android/app/src/main/java/com/{your-package}/MainActivity.java
+
+    Add these imports
+    ```
+    import org.devio.rn.splashscreen.SplashScreen;
+    import android.os.Bundle;
+    ```
+
+    And add this method
+
+    ```
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this);
+        super.onCreate(savedInstanceState);
+    }
+    ```
+
+## 11. Hide splash screen when the app loads
+
+    Inside App.js (your apps entry point), hide the splash screen
+
+    Functional Component Example
+
+    ```
+    import React, { useEffect } from 'react';
+    import SplashScreen from 'react-native-splash-screen';
+
+    const App = () => {
+        useEffect(() => {
+            SplashScreen.hide();
+        }, []);
+
+        ...
+    };
+    export default App;
+    ```
+
+    Class Component Example
+
+    ```
+    import React, { Component } from 'react';
+    import SplashScreen from 'react-native-splash-screen';
+
+    class App extends Component {
+        componentDidMount() {
+            SplashScreen.hide()
+        }
+
+        ...
+    }
+    export default App;
+    ```
+
+## 12. Create launch_screen.xml inside android/app/src/main/res/layout
+
+    Note: The file name launch_screen.xml matters, don't change it.
+    Note: Create the layout folder if it doesn't already exist
+
+    Add this to `launch_screen.xml`
+
+    ```
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue"
+        android:gravity="center">
+
+    <!-- Width & Height must be same as defined in android/app/src/main/res/drawable/background_splash.xml -->
+    <!-- Update your image name in android:src -->
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="24dp"
+            android:src="@mipmap/icon"
+        />
+    </LinearLayout>
+    ```
+
+## 13. Add color for react-native-splash-screen
+
+    Inside `android/app/src/main/res/values/colors.xml`
+    Add
+    ```
+    <color name="primary_dark">#4F6D7A</color>
+    ```
+
+## 14. Update the status bar color for the second splash screen
+
+    Inside `android/app/src/main/res/values/colors.xml`
+    Add
+    ```
+    <color name="status_bar_color">#1b4261</color>
+    ```
+
+## 15. Create style for second splash screen
+
+    Inside `android/app/src/main/res/values/styles.xml`
+    Add
+    ```
+    <style name="SplashScreenTheme" parent="SplashScreen_SplashTheme">
+        <item name="colorPrimaryDark">@color/status_bar_color</item>
+    </style>
+    ```
+
+## 16. Update Activity to use splash styles
+
+    Inside `android/app/src/main/java/com/{your-package}/MainActivity.java`
+
+    Update this line
+    ```
+    SplashScreen.show(this);
+    ```
+    to this
+    ```
+    SplashScreen.show(this, R.style.SplashScreenTheme);
+    ```
 
 ## Find if I'm using AndroidX
 

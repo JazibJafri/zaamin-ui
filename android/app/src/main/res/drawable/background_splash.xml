@@ -4,10 +4,12 @@
     <item
         android:drawable="@color/blue"/>
 
+    <!-- Width & Height must be same as defined in android/app/src/main/res/layout/launch_screen.xml -->
     <item
-        android:width="230dp"
+        android:width="293dp"
         android:height="115dp"
         android:drawable="@mipmap/logo"
-        android:gravity="center" />
+        android:gravity="center" 
+    />
 
 </layer-list>
