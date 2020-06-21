@@ -23,7 +23,9 @@ import { FontContextProvider } from 'contexts/FontContext';
 
 const App: React.FC = () => {
     useEffect(() => {
-        SplashScreen.hide();
+        setTimeout(() => {
+            SplashScreen.hide();
+        }, 0);
     }, []);
     return (
         <>

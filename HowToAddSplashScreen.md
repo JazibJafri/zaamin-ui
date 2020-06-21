@@ -1,87 +1,79 @@
-## 1. Add your image to android/app/src/main/res/mipmap-\*
+## Steps to add splash screen
 
-    Add the same image to all mipmap folders and make sure all of them are of same name.
+### 1. Add your image to android/app/src/main/res/mipmap-\*
 
-    ```
-    Like
-        mipmap/hdpi/icon.png
-        mipmap/mdpi/icon.png
-        mipmap/xhdpi/icon.png
-        etc.
-    ```
+Add the same image to all **mipmap** folders and make sure all of them are of same name.
 
-## 2. Create folder `drawable` inside android/app/src/main/res if it doesn't exists
+Like
 
-## 3. Create `background_splash.xml` in android/app/src/main/res/drawable
+```
+    mipmap/hdpi/icon.png
+    mipmap/mdpi/icon.png
+    mipmap/xhdpi/icon.png
 
-    Add this to `background_splash.xml`
-    ```
-    <?xml version="1.0" encoding="utf-8"?>
-    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    etc.
+```
+
+### 2. Create folder `drawable` inside android/app/src/main/res if it doesn't exists
+
+### 3. Create `background_splash.xml` in android/app/src/main/res/drawable
+
+Add the following to `background_splash.xml`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
     <!-- We will add this color later -->
     <item
         android:drawable="@color/blue"/>
 
-    <!-- icon is the name of your image (without the extension) -->
+    <!-- icon is the name of your image, you added in step 1 (without the extension) -->
     <item
         android:width="200dp"
         android:height="200dp"
         android:drawable="@mipmap/icon"
         android:gravity="center" />
 
-    </layer-list>
-    ```
+</layer-list>
+```
 
-    Complete `background-splash.xml` looks like
-    ```
-    <?xml version="1.0" encoding="utf-8"?>
-    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+### 4. Create `colors.xml` in android/app/src/main/res/values
 
-    <item
-        android:drawable="@color/blue"/>
+Define the blue color we used in `background_splash.xml`
 
-    <item
-        android:width="460dp"
-        android:height="252dp"
-        android:drawable="@mipmap/logo"
-        android:gravity="center" />
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#1b4261</color>
+</resources>
+```
 
-    </layer-list>
-    ```
+### 5. Create a SplashTheme in android/app/src/main/res/values/styles.xml
 
-## 4. Create `colors.xml` in android/app/src/main/res/values
+Inside `android/app/src/main/res/values/styles.xml`, add
 
-    Define the blue color we used in `background_splash.xml`
+```xml
+<style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/background_splash</item>
+    <!-- Updates the status bar to our blue color -->
+    <item name="android:statusBarColor">@color/blue</item>
+</style>
+```
 
-    ```
-    <?xml version="1.0" encoding="utf-8"?>
-    <resources>
-        <color name="blue">#1b4261</color>
-    </resources>
-    ```
+Update the statusBar of AppTheme as well
 
-## 5. Create a SplashTheme in android/app/src/main/res/values/styles.xml
+```xml
+<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="android:statusBarColor">@color/blue</item>
+</style>
+```
 
-    ```
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/background_splash</item>
-        <!-- Updates the status bar to our blue color -->
-        <item name="android:statusBarColor">@color/blue</item>
-    </style>
-    ```
-    Update the statusBar of AppTheme as well, inside android/app/src/main/res/values/styles.xml
+Complete `styles.xml` looks like
 
-    ```
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="android:statusBarColor">@color/blue</item>
-    </style>
-    ```
-
-    Complete styles.xml looks like
-    ```
-    <resources>
-
+```xml
+<resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -92,46 +84,51 @@
         <item name="android:windowBackground">@drawable/background_splash</item>
         <item name="android:statusBarColor">@color/blue</item>
     </style>
-    </resources>
-    ```
+</resources>
+```
 
-## 6. Tell app to use the SplashTheme in android/app/src/main/AndroidManifest.xml
+### 6. Tell app to use the SplashTheme in android/app/src/main/AndroidManifest.xml
 
-    Add this activity inside `application` tag, **before** the MainActivity activity tag
-    ```
-    <activity
-        android:name=".SplashActivity"
-        android:theme="@style/SplashTheme"
-        android:label="@string/app_name">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    ```
+Add this activity inside `application` tag, **before** the MainActivity activity tag
 
-    Also make sure the `intent-filter` tag is present only in the SplashActivity tag
-    we added above. If it is present in MainActivity, remove it.
-    > Note that both intent-filter tags are the same
+```xml
+<activity
+    android:name=".SplashActivity"
+    android:theme="@style/SplashTheme"
+    android:label="@string/app_name">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
+```
 
-    Now modify MainActivity to add `android:exported="true"`
+Also make sure the `intent-filter` tag is present only once and inside the
+`SplashActivity` tag we added above. If it is present in MainActivity, remove it.
 
-    MainActivity now looks like
-    ```
-    <activity
-        android:name=".MainActivity"
-        android:label="@string/app_name"
-        android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-        android:launchMode="singleTask"
-        android:windowSoftInputMode="adjustPan|adjustResize"
-        android:exported="true">
-    </activity>
-    ```
+> Note that both intent-filter (the one we added in SplashActivity & the one we
+> removed from MainActivity) tags are the same
 
-    Complete AndroidManifest.xml looks like
-    ```
-    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.zaaminapp">
+Now modify MainActivity to add `android:exported="true"`
+
+MainActivity now looks like
+
+```xml
+<activity
+    android:name=".MainActivity"
+    android:label="@string/app_name"
+    android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+    android:launchMode="singleTask"
+    android:windowSoftInputMode="adjustResize"
+    android:exported="true">
+</activity>
+```
+
+Complete AndroidManifest.xml looks like
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.splash">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -156,234 +153,296 @@
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
         android:launchMode="singleTask"
-        android:windowSoftInputMode="adjustPan|adjustResize"
+        android:windowSoftInputMode="adjustResize"
         android:exported="true">
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
 
-    </manifest>
-    ```
+</manifest>
+```
 
-## 7. Go inside your package android/app/src/main/java/com/{your-package}
+### 7. Go inside your package android/app/src/main/java/com/{yourpackage}
 
-    You will find `MainActivity.java` in this folder, here create
-    a new file `SplashActivity.java` and add this
+You will find `MainActivity.java` in this folder, here create a new file
+`SplashActivity.java` and add this
 
-    ```
-    package com.{your-package}; // Your package name, same as in MainActivity.java
+> Note the comments in the code below
 
-    import android.content.Intent;
-    import android.os.Bundle;
+```java
+package com.{yourpackage}; // Your package name, same as in MainActivity.java
 
-    // NOTE: ONLY ONE OF THE BELOW IMPORT LINES SHOULD BE USED
+import android.content.Intent;
+import android.os.Bundle;
 
-    // Use this line if you are using android.support.v7
-    // If you have no idea about this, check out `Find if I'm using AndroidX` section below
-    import android.support.v7.app.AppCompatActivity;
+/**
+ * NOTE: Only one of the below import lines should be used
+ * I am using androidx so the import for that is used.
+ * */
 
-    // Use this line if you are using androidx
+/**
+ * Use the line below if you are using android.support.v7
+ * If you have no idea about this, check out `Find if I'm using AndroidX` section below
+ * */
+// import android.support.v7.app.AppCompatActivity;
 
-    import androidx.appcompat.app.AppCompatActivity;
+// Use this line if you are using androidx
+import androidx.appcompat.app.AppCompatActivity;
 
-    public class SplashActivity extends AppCompatActivity {
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
-    ```
-
-## 7.1 If you are using AndroidX
-
-    Go to android/app/build.gradle
-
-    Add
-
-    ```
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    ```
-
-    in dependencies, like
-
-    ```
-    dependencies {
-        implementation "com.facebook.react:react-native:+"  // From node_modules
-
-        implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-        ...
-        implementation 'androidx.appcompat:appcompat:1.0.0'
-    }
-    ```
-
-## 7.2 If you are using androidv7
-
-    Go to android/app/build.gradle
-
-    Add
-
-    ```
-    compile 'com.android.support:appcompat-v7:28.0.0
-    ```
-
-    in dependencies, like
-
-    ```
-    dependencies {
-        compile "com.facebook.react:react-native:+"  // From node_modules
-
-        compile "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-        ...
-        compile 'com.android.support:appcompat-v7:28.0.0
-    }
-    ```
-
-## 8. Quit metro bundler and builds if they are running
-
-    Restart build, let the metro bundler finish when it opens your app, after you see
-    your first screen (not the splash screen), close and clear the app. Reopen it.
-
-    You should now see your splash screen, and then a white screen.
-    If you want to fix this white screen, keep reading
-
-## 9. Install `react-native-splash-screen@3.2.0`
-
-## 10. Display a second same splash screen instead of the white screen
-
-    Inside android/app/src/main/java/com/{your-package}/MainActivity.java
-
-    Add these imports
-    ```
-    import org.devio.rn.splashscreen.SplashScreen;
-    import android.os.Bundle;
-    ```
-
-    And add this method
-
-    ```
+public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen.show(this);
         super.onCreate(savedInstanceState);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
-    ```
+}
+```
 
-## 11. Hide splash screen when the app loads
+### 7.1 If you are using AndroidX
 
-    Inside App.js (your apps entry point), hide the splash screen
+Go to `android/app/build.gradle`
 
-    Functional Component Example
+Inside dependencies, add
 
-    ```
-    import React, { useEffect } from 'react';
-    import SplashScreen from 'react-native-splash-screen';
+```
+implementation 'androidx.appcompat:appcompat:1.0.0'
+```
 
-    const App = () => {
-        useEffect(() => {
-            SplashScreen.hide();
-        }, []);
+Example:
+```
+dependencies {
+    implementation "com.facebook.react:react-native:+"  // From node_modules
 
-        ...
-    };
-    export default App;
-    ```
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    ...
+    implementation 'androidx.appcompat:appcompat:1.0.0' //<--- added
+}
+```
 
-    Class Component Example
+### 7.2 If you are using androidv7
 
-    ```
-    import React, { Component } from 'react';
-    import SplashScreen from 'react-native-splash-screen';
+Go to `android/app/build.gradle`
 
-    class App extends Component {
-        componentDidMount() {
-            SplashScreen.hide()
-        }
+Inside dependencies, add
 
-        ...
+```
+compile 'com.android.support:appcompat-v7:28.0.0
+```
+
+Example:
+```
+dependencies {
+    compile "com.facebook.react:react-native:+"  // From node_modules
+
+    compile "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    ...
+    compile 'com.android.support:appcompat-v7:28.0.0 //<--- added
+}
+```
+
+### 8. Quit metro bundler and exit builds, if they are running
+
+Restart build, let the metro bundler finish when it opens your app, after you see
+your first screen *(not the splash screen)*, close and clear the app. Reopen it.
+
+You should now see your splash screen, and then a white screen.
+If you want to fix this white screen, keep reading.
+
+## Steps to remove white screen
+
+### 9. Install `react-native-splash-screen@3.2.0`
+
+Inside your project run 
+```
+npm install react-native-splash-screen@3.2.0
+```
+
+### 10. Display a second same splash screen instead of the white screen
+
+Inside `android/app/src/main/java/com/{yourpackage}/MainActivity.java`
+
+Add these imports
+
+```java
+import org.devio.rn.splashscreen.SplashScreen;
+import android.os.Bundle;
+```
+And add this method
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    SplashScreen.show(this);
+    super.onCreate(savedInstanceState);
+}
+```
+
+Complete `MainActivity.java` now looks like
+
+```java
+package com.yourpackage;
+
+import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen;
+import android.os.Bundle;
+
+public class MainActivity extends ReactActivity {
+
+  @Override
+  protected String getMainComponentName() {
+    return "appname";
+  }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    SplashScreen.show(this);
+    super.onCreate(savedInstanceState);
+  }
+}
+
+```
+
+### 11. Hide splash screen when the app loads
+
+Inside `App.js` (your app's entry point), hide the splash screen
+
+Functional Component Example:
+
+```js
+import React, { useEffect } from 'react';
+import SplashScreen from 'react-native-splash-screen';
+
+const App = () => {
+    useEffect(() => {
+        SplashScreen.hide();
+    }, []);
+    ...
+};
+export default App;
+```
+
+Class Component Example:
+
+```js
+import React, { Component } from 'react';
+import SplashScreen from 'react-native-splash-screen';
+
+class App extends Component {
+    componentDidMount() {
+        SplashScreen.hide()
     }
-    export default App;
-    ```
+    ...
+}
+export default App;
+```
 
-## 12. Create launch_screen.xml inside android/app/src/main/res/layout
+### 12. Create launch_screen.xml inside android/app/src/main/res/layout
 
-    Note: The file name launch_screen.xml matters, don't change it.
-    Note: Create the layout folder if it doesn't already exist
+> Note: The file name launch_screen.xml matters, don't change it.
+> Note: Create the layout folder if it doesn't already exist
 
-    Add this to `launch_screen.xml`
+Add this to `launch_screen.xml`
 
-    ```
-    <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blue"
-        android:gravity="center">
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    android:gravity="center">
 
     <!-- Width & Height must be same as defined in android/app/src/main/res/drawable/background_splash.xml -->
     <!-- Update your image name in android:src -->
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="24dp"
-            android:src="@mipmap/icon"
-        />
-    </LinearLayout>
-    ```
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        android:src="@mipmap/icon"
+    />
+</LinearLayout>
+```
 
-## 13. Add color for react-native-splash-screen
+### 13. Add color for react-native-splash-screen
 
-    Inside `android/app/src/main/res/values/colors.xml`
-    Add
-    ```
-    <color name="primary_dark">#4F6D7A</color>
-    ```
+Inside `android/app/src/main/res/values/colors.xml`
+Add
 
-## 14. Update the status bar color for the second splash screen
+```xml
+<color name="primary_dark">#4F6D7A</color>
+```
 
-    Inside `android/app/src/main/res/values/colors.xml`
-    Add
-    ```
-    <color name="status_bar_color">#1b4261</color>
-    ```
+### 14. Update the status bar color for the second splash screen
 
-## 15. Create style for second splash screen
+Inside `android/app/src/main/res/values/colors.xml`
+Add
 
-    Inside `android/app/src/main/res/values/styles.xml`
-    Add
-    ```
-    <style name="SplashScreenTheme" parent="SplashScreen_SplashTheme">
-        <item name="colorPrimaryDark">@color/status_bar_color</item>
-    </style>
-    ```
+```xml
+<color name="status_bar_color">#1b4261</color>
+```
 
-## 16. Update Activity to use splash styles
+### 15. Create style for second splash screen
 
-    Inside `android/app/src/main/java/com/{your-package}/MainActivity.java`
+Inside `android/app/src/main/res/values/styles.xml`
+Add
 
-    Update this line
-    ```
+```xml
+<style name="SplashScreenTheme" parent="SplashScreen_SplashTheme">
+    <item name="colorPrimaryDark">@color/status_bar_color</item>
+</style>
+```
+
+### 16. Update Activity to use splash styles
+
+Inside `android/app/src/main/java/com/{yourpackage}/MainActivity.java`
+
+Update this line
+
+```java
     SplashScreen.show(this);
-    ```
-    to this
-    ```
+```
+to this
+
+```java
     SplashScreen.show(this, R.style.SplashScreenTheme);
-    ```
+```
 
-## Find if I'm using AndroidX
+Complete `MainActivity.java` now looks like:
 
-    Go to `android/gradle.properties`
+```java
+package com.yourpackage;
 
-    And check if you have these lines
+import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen;
+import android.os.Bundle;
 
-    ```
-    android.useAndroidX=true
-    android.enableJetifier=true
-    ```
+public class MainActivity extends ReactActivity {
+    @Override
+    protected String getMainComponentName() {
+        return "appname";
+    }
 
-    If you have the above lines, you are using AndroidX
-    If not, you are using v7 (deprecated)
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this, R.style.SplashScreenTheme);
+        super.onCreate(savedInstanceState);
+    }
+}
+
+```
+
+### Find if I'm using AndroidX
+
+Go to `android/gradle.properties`
+
+And check if you have these lines
+
+```
+android.useAndroidX=true
+android.enableJetifier=true
+```
+If you **have** the above lines, you are using **AndroidX**
+If not, you are using v7 (deprecated)
