@@ -30,6 +30,8 @@ module.exports = exports = {
         '@typescript-eslint/explicit-function-return-type': OFF,
         '@typescript-eslint/no-unused-vars': OFF,
         'no-unexpected-multiline': ERROR,
+        '@typescript-eslint/ban-ts-ignore': OFF,
+        'react-hooks/exhaustive-deps': OFF,
 
         // Best Practices
 

@@ -17,7 +17,7 @@ export const AppUsageStyles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        height: 80,
+        height: 120,
         // ...border,
     },
     buttonView: {

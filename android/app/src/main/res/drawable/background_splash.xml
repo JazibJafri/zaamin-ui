@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@color/orange"/>
+
+    <!-- Width & Height must be same as defined in android/app/src/main/res/layout/launch_screen.xml -->
+    <item
+        android:width="293dp"
+        android:height="115dp"
+        android:drawable="@mipmap/logo"
+        android:gravity="center" 
+    />
+
+</layer-list>

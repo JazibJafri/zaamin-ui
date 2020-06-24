@@ -1,3 +1,4 @@
 export const Images = {
-    logo: require('./logo.jpeg'),
+    logo: require('./logo.png'),
+    loader: require('./loader.gif'),
 };
