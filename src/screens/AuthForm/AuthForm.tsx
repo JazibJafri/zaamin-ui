@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { View, Image, ScrollView } from 'react-native';
 import { RegularInput } from 'components/RegularInput';
 import { Images } from 'images';
@@ -10,6 +10,7 @@ import {
 } from './AuthForm.styles';
 import { RegularText } from 'components/RegularText';
 import { Button } from 'components/Button';
+import { AppContext } from 'contexts/AppContext';
 
 type Props = WithStackNavigation<'AuthForm'>;
 
@@ -24,6 +25,14 @@ const AuthForm: React.FC<Props> = ({ navigation, route }) => {
         const params = { isSignUp: !isSignUp };
         navigation.navigate(navigateTo, params);
     };
+
+    const { setIsAppLoaded } = useContext(AppContext);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsAppLoaded(true);
+        }, 8000);
+    }, []);
 
     return (
         <ScrollView>

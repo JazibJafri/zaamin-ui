@@ -20,6 +20,8 @@ import SplashScreen from 'react-native-splash-screen';
 import { initStore, persistor } from 'redux-store';
 import { RootStackNavigator } from 'navigators/Stacks/RootStack';
 import { FontContextProvider } from 'contexts/FontContext';
+import { AppContextProvider } from 'contexts/AppContext';
+import { Splash } from 'screens/Splash';
 
 const App: React.FC = () => {
     useEffect(() => {
@@ -31,12 +33,16 @@ const App: React.FC = () => {
         <>
             <Provider store={initStore}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <FontContextProvider>
-                        <StatusBar barStyle="default" />
-                        <NavigationContainer>
-                            <RootStackNavigator />
-                        </NavigationContainer>
-                    </FontContextProvider>
+                    <AppContextProvider>
+                        <FontContextProvider>
+                            <StatusBar barStyle="default" />
+                            <Splash>
+                                <NavigationContainer>
+                                    <RootStackNavigator />
+                                </NavigationContainer>
+                            </Splash>
+                        </FontContextProvider>
+                    </AppContextProvider>
                 </PersistGate>
             </Provider>
         </>
