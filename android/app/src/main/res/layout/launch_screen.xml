@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/orange"
     android:gravity="center">
     <!-- Width & Height must be same as defined in android/app/src/main/res/drawable/background_splash.xml -->
     <ImageView

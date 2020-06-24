@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@color/blue"/>
+        android:drawable="@color/orange"/>
 
     <!-- Width & Height must be same as defined in android/app/src/main/res/layout/launch_screen.xml -->
     <item
