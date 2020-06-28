@@ -6,10 +6,11 @@
     android:background="@color/orange"
     android:gravity="center">
     <!-- Width & Height must be same as defined in android/app/src/main/res/drawable/background_splash.xml -->
+    <!-- 2 -->
     <ImageView
         android:layout_width="400dp"
         android:layout_height="115dp"
         android:layout_marginTop="24dp"
-        android:src="@mipmap/logo"
+        android:src="@mipmap/logo_with_glow"
     />
 </LinearLayout>
