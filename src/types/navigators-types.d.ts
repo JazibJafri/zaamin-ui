@@ -2,6 +2,7 @@ import { DrawerScreenProps } from '@react-navigation/drawer';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { StackScreenProps } from '@react-navigation/stack';
 import { ParamListBase } from '@react-navigation/native';
+import { AppUsageOptions, AccountTypes } from 'constants/app';
 
 declare global {
     type WithDrawerNavigation<
@@ -16,8 +17,12 @@ declare global {
 
     type RootStackParamList = {
         AppUsage: undefined;
-        Welcome: undefined;
-        AuthForm: { isSignUp?: boolean };
+        AccountType: undefined;
+        AuthForm: {
+            isSignUp?: boolean;
+            appUsage?: AppUsageOptions;
+            accountType?: AccountTypes;
+        };
     };
 
     type WithStackNavigation<

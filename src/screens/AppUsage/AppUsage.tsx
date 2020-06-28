@@ -3,6 +3,7 @@ import { View, Image } from 'react-native';
 import { Images } from 'images';
 import { Button } from 'components/Button';
 import { AppUsageStyles, buttons } from './AppUsage.styles';
+import { AppUsageOptions } from 'constants/app';
 
 const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => {
     const icon = {
@@ -17,15 +18,20 @@ const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => 
             </View>
             <View style={AppUsageStyles.buttonView}>
                 <Button
-                    title="School"
-                    onPress={() => navigation.navigate('Welcome')}
+                    title={AppUsageOptions.SCHOOL}
+                    onPress={() => navigation.navigate('AccountType')}
                     style={buttons}
                     size="large"
                     icon={icon}
                 />
                 <Button
-                    title="Picnic"
-                    onPress={() => navigation.navigate('AuthForm', { isSignUp: true })}
+                    title={AppUsageOptions.PICNIC}
+                    onPress={() =>
+                        navigation.navigate('AuthForm', {
+                            isSignUp: true,
+                            appUsage: AppUsageOptions.PICNIC,
+                        })
+                    }
                     style={buttons}
                     size="large"
                     icon={icon}

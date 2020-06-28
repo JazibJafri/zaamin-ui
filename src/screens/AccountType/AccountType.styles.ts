@@ -4,7 +4,7 @@ import { globalStyles } from 'styles/app.styles';
 
 const { border, centerContent, flexFullColumn, flexFullRow } = globalStyles;
 
-export const WelcomeStyles = StyleSheet.create({
+export const AccountTypeStyles = StyleSheet.create({
     container: {
         ...flexFullColumn,
     },
@@ -43,15 +43,15 @@ export const WelcomeStyles = StyleSheet.create({
 });
 
 export const middleButton = {
-    title: WelcomeStyles.buttonText,
-    button: WelcomeStyles.buttonStyle,
+    title: AccountTypeStyles.buttonText,
+    button: AccountTypeStyles.buttonStyle,
 };
 
 export const leftButton = {
-    title: WelcomeStyles.buttonText,
-    button: { ...WelcomeStyles.buttonStyle, ...WelcomeStyles.leftButton },
+    title: AccountTypeStyles.buttonText,
+    button: { ...AccountTypeStyles.buttonStyle, ...AccountTypeStyles.leftButton },
 };
 export const rightButton = {
-    title: WelcomeStyles.buttonText,
-    button: { ...WelcomeStyles.buttonStyle, ...WelcomeStyles.rightButton },
+    title: AccountTypeStyles.buttonText,
+    button: { ...AccountTypeStyles.buttonStyle, ...AccountTypeStyles.rightButton },
 };

@@ -9,12 +9,13 @@ declare global {
         dispatch: Dispatch<ActionCreator>;
     }
 
-    interface ActionCreator {
-        type: string;
-        payload: unknown;
+    interface ActionCreator<ActionType = string, PayloadType = unknown> {
+        type: ActionType;
+        payload: PayloadType;
     }
 
-    interface ActionType extends Action<string> {
-        payload?: unknown;
+    interface ActionType<ActionType = string, PayloadType = unknown>
+        extends Action<ActionType> {
+        payload?: PayloadType;
     }
 }

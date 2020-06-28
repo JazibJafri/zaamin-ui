@@ -1,106 +1,48 @@
-import React, { useEffect, useContext } from 'react';
-import { View, Image, ScrollView } from 'react-native';
-import { RegularInput } from 'components/RegularInput';
-import { Images } from 'images';
-import {
-    AuthFormStyles,
-    socialButtons,
-    submitButton,
-    messageButton,
-} from './AuthForm.styles';
-import { RegularText } from 'components/RegularText';
-import { Button } from 'components/Button';
+import React, { useEffect, useContext, useReducer } from 'react';
+import { ScrollView } from 'react-native';
 import { AppContext } from 'contexts/AppContext';
+import { AuthFormContainer } from 'containers/AuthFormContainer';
+import { AuthReducer, initialState, authActionCreator } from './AuthForm.reducer';
+import * as Text from 'constants/text';
+import { AuthState } from './AuthForm.types';
 
 type Props = WithStackNavigation<'AuthForm'>;
 
 const AuthForm: React.FC<Props> = ({ navigation, route }) => {
-    const isSignUp = route.params?.isSignUp || false;
-    const title = isSignUp ? 'Sign up' : 'Login';
-    const message = isSignUp ? 'Already registered?' : `Don't have an account`;
-    const messageButtonText = isSignUp ? 'Login' : 'Sign up';
-
-    const navigate = () => {
-        const navigateTo = isSignUp ? 'AuthForm' : 'AppUsage';
-        const params = { isSignUp: !isSignUp };
-        navigation.navigate(navigateTo, params);
-    };
-
     const { setIsAppLoaded } = useContext(AppContext);
+    const [state, dispatch] = useReducer<typeof AuthReducer>(AuthReducer, initialState);
+    const params = {
+        isSignUp: !!route.params?.isSignUp,
+        title: route.params?.isSignUp ? Text.SIGNUP : Text.LOGIN,
+        message: route.params?.isSignUp
+            ? Text.ALREADY_REGISTERED
+            : Text.DONT_HAVE_AN_ACCOUNT,
+        messageButtonText: route.params?.isSignUp ? Text.LOGIN : Text.SIGNUP,
+    };
 
     useEffect(() => {
         setTimeout(() => {
             setIsAppLoaded(true);
-        }, 8000);
+        }, 1000);
     }, []);
+    const navigate = () => {
+        const navigateTo = params.isSignUp ? 'AuthForm' : 'AppUsage';
+        const props = { isSignUp: !params.isSignUp };
+        navigation.navigate(navigateTo, props);
+    };
+
+    const handleOnChange = (property: keyof AuthState, value: string) => {
+        dispatch(authActionCreator(property, value));
+    };
 
     return (
         <ScrollView>
-            <View style={AuthFormStyles.container}>
-                <View style={AuthFormStyles.imageView}>
-                    <Image source={Images.logo} style={AuthFormStyles.image} />
-                </View>
-                <View style={AuthFormStyles.heading}>
-                    <RegularText size="huge" style={AuthFormStyles.title}>
-                        {title}
-                    </RegularText>
-                    <RegularText style={AuthFormStyles.subText}>
-                        with your social network
-                    </RegularText>
-                </View>
-                <View style={AuthFormStyles.socialButtons}>
-                    <Button title="Google" style={socialButtons} onPress={() => null} />
-                    <Button title="Facebook" style={socialButtons} onPress={() => null} />
-                </View>
-                <View style={AuthFormStyles.orText}>
-                    <RegularText>OR</RegularText>
-                </View>
-                <View style={AuthFormStyles.form}>
-                    <RegularInput
-                        style={AuthFormStyles.input}
-                        placeholder="Email"
-                        keyboardType="email-address"
-                    />
-                    <RegularInput
-                        style={AuthFormStyles.input}
-                        placeholder="Password"
-                        secureTextEntry={true}
-                    />
-                    {isSignUp && (
-                        <>
-                            <RegularInput
-                                style={AuthFormStyles.input}
-                                placeholder="First Name"
-                            />
-                            <RegularInput
-                                style={AuthFormStyles.input}
-                                placeholder="Last Name"
-                            />
-                            <RegularInput
-                                style={AuthFormStyles.input}
-                                placeholder="Contact"
-                                keyboardType="number-pad"
-                            />
-                        </>
-                    )}
-                    <View style={AuthFormStyles.submitButton}>
-                        <Button
-                            title={title}
-                            onPress={() => null}
-                            style={submitButton}
-                            size="large"
-                        />
-                        <View style={AuthFormStyles.messageView}>
-                            <RegularText>{message}</RegularText>
-                            <Button
-                                style={messageButton}
-                                title={messageButtonText}
-                                onPress={navigate}
-                            />
-                        </View>
-                    </View>
-                </View>
-            </View>
+            <AuthFormContainer
+                {...params}
+                navigate={navigate}
+                state={state}
+                handleOnChange={handleOnChange}
+            />
         </ScrollView>
     );
 };
