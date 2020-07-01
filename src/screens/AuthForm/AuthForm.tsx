@@ -16,7 +16,7 @@ const AuthForm: React.FC<Props> = ({ navigation, route }) => {
     const params = {
         isSignUp: !!route.params?.isSignUp,
         accountType: route.params?.accountType || AccountTypes.PARENT,
-        appUsage: route.params.appUsage,
+        appUsage: route.params?.appUsage,
         title: route.params?.isSignUp ? Text.SIGNUP : Text.LOGIN,
         message: route.params?.isSignUp
             ? Text.ALREADY_REGISTERED
