@@ -11,18 +11,37 @@ import {
 import { RegularText } from 'components/RegularText';
 import { Button } from 'components/Button';
 import { AuthState } from 'screens/AuthForm/AuthForm.types';
+import { AccountTypes } from 'constants/app';
+import { AuthSchool } from './AuthSchool';
+import { AuthParent } from './AuthParent';
+import { AuthTransporter } from './AuthTransporter';
 
 type Props = {
     title: string;
     message: string;
     isSignUp: boolean;
     messageButtonText: string;
+    accountType: AccountTypes;
     navigate: () => void;
     state: AuthState;
-    handleOnChange: (p: keyof AuthState, val: string) => void;
+    handleOnChange: HandleChange;
 };
+type HandleChange = (p: keyof AuthState, val: string) => void;
 
 const AuthFormContainer: React.FC<Props> = props => {
+    const signupForm = () => (
+        <>
+            {props.accountType === AccountTypes.SCHOOL && (
+                <AuthSchool handleOnChange={props.handleOnChange} />
+            )}
+            {props.accountType === AccountTypes.PARENT && (
+                <AuthParent handleOnChange={props.handleOnChange} />
+            )}
+            {props.accountType === AccountTypes.TRANSPORTER && (
+                <AuthTransporter handleOnChange={props.handleOnChange} />
+            )}
+        </>
+    );
     return (
         <>
             <View style={AuthFormStyles.container}>
@@ -57,30 +76,7 @@ const AuthFormContainer: React.FC<Props> = props => {
                         secureTextEntry={true}
                         onChangeText={val => props.handleOnChange('password', val)}
                     />
-                    {props.isSignUp && (
-                        <>
-                            <RegularInput
-                                style={AuthFormStyles.input}
-                                placeholder="First Name"
-                                onChangeText={val =>
-                                    props.handleOnChange('firstName', val)
-                                }
-                            />
-                            <RegularInput
-                                style={AuthFormStyles.input}
-                                placeholder="Last Name"
-                                onChangeText={val =>
-                                    props.handleOnChange('lastName', val)
-                                }
-                            />
-                            <RegularInput
-                                style={AuthFormStyles.input}
-                                placeholder="Contact"
-                                keyboardType="number-pad"
-                                onChangeText={val => props.handleOnChange('contact', val)}
-                            />
-                        </>
-                    )}
+                    {props.isSignUp && signupForm()}
                     <View style={AuthFormStyles.submitButton}>
                         <Button
                             title={props.title}

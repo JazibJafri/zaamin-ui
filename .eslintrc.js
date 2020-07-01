@@ -137,7 +137,7 @@ module.exports = exports = {
         'indent': [OFF, 4],
         'jsx-quotes': [ERROR, 'prefer-double'],
         'linebreak-style': [ERROR, 'windows'],
-        'lines-around-comment': [ERROR, { beforeBlockComment: true }],
+        'lines-around-comment': [OFF, { beforeBlockComment: true }],
         'max-depth': [ERROR, 4],
         'max-len': [ERROR, { code: 90, ignoreUrls: true }],
         'max-nested-callbacks': [ERROR, 4],
