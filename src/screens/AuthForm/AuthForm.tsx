@@ -5,14 +5,18 @@ import { AuthFormContainer } from 'containers/AuthFormContainer';
 import { AuthReducer, initialState, authActionCreator } from './AuthForm.reducer';
 import * as Text from 'constants/text';
 import { AuthState } from './AuthForm.types';
+import { AccountTypes } from 'constants/app';
 
 type Props = WithStackNavigation<'AuthForm'>;
 
 const AuthForm: React.FC<Props> = ({ navigation, route }) => {
     const { setIsAppLoaded } = useContext(AppContext);
     const [state, dispatch] = useReducer<typeof AuthReducer>(AuthReducer, initialState);
+
     const params = {
         isSignUp: !!route.params?.isSignUp,
+        accountType: route.params?.accountType || AccountTypes.PARENT,
+        appUsage: route.params?.appUsage,
         title: route.params?.isSignUp ? Text.SIGNUP : Text.LOGIN,
         message: route.params?.isSignUp
             ? Text.ALREADY_REGISTERED

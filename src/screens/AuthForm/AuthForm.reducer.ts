@@ -5,6 +5,8 @@ export const initialState: AuthState = {
     email: '',
     password: '',
     contact: '',
+    branchName: '',
+    schoolName: '',
 };
 
 export const authActionCreator = (
