@@ -42,4 +42,15 @@ export const globalStyles = StyleSheet.create({
         fontFamily: 'Oswald-Medium',
         fontSize: 15,
     },
+    defaultError: {
+        borderColor: colors.red,
+        alignItems: 'center',
+        marginBottom: 2,
+        paddingHorizontal: 5,
+        fontFamily: 'Oswald-ExtraLight',
+    },
+    defaultErrorText: {
+        color: colors.red,
+        fontSize: 12,
+    },
 });

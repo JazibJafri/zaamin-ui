@@ -1,7 +1,8 @@
 export const colors = {
-    grey: '#ddd',
-    black: '#000',
-    white: '#fff',
+    grey: '#DDDDDD',
+    black: '#000000',
+    white: '#FFFFFF',
+    red: '#FF0000',
 };
 
 export const fontSizes = {
@@ -11,9 +12,9 @@ export const fontSizes = {
 };
 
 export const fontColors = {
-    grey: '#ddd',
-    black: '#000',
-    white: '#fff',
+    grey: '#DDDDDD',
+    black: '#000000',
+    white: '#FFFFFF',
 };
 
 export const logoColors = {

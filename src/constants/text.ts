@@ -2,3 +2,7 @@ export const SIGNUP = 'Sign up';
 export const LOGIN = 'Login';
 export const ALREADY_REGISTERED = 'Already registered?';
 export const DONT_HAVE_AN_ACCOUNT = "Don't have an account";
+export const INVALID_EMAIL_FORMAT = 'Invalid email format';
+export const VALIDATION_PASSED = 'Validation passed';
+export const FIELD_IS_REQUIRED = 'Field is required';
+export const INVALID_PHONE = 'Invalid phone';

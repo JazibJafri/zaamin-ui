@@ -4,7 +4,8 @@ import { AuthFormStyles } from './AuthFormContainer.styles';
 import { AuthState } from 'screens/AuthForm/AuthForm.types';
 
 type Props = {
-    handleOnChange: (p: keyof AuthState, val: string) => void;
+    handleOnChange: HandleStateChange<AuthState>;
+    state: AuthState;
 };
 
 const AuthTransporter: React.FC<Props> = props => {
@@ -13,18 +14,24 @@ const AuthTransporter: React.FC<Props> = props => {
             <RegularInput
                 style={AuthFormStyles.input}
                 placeholder="First Name"
-                onChangeText={val => props.handleOnChange('firstName', val)}
+                value={props.state.firstName}
+                onChangeText={val => props.handleOnChange(val, 'firstName')}
+                validators={['basic']}
             />
             <RegularInput
                 style={AuthFormStyles.input}
                 placeholder="Last Name"
-                onChangeText={val => props.handleOnChange('lastName', val)}
+                value={props.state.lastName}
+                onChangeText={val => props.handleOnChange(val, 'lastName')}
+                validators={['basic']}
             />
             <RegularInput
                 style={AuthFormStyles.input}
                 placeholder="Contact"
-                keyboardType="number-pad"
-                onChangeText={val => props.handleOnChange('contact', val)}
+                value={props.state.contact}
+                keyboardType="phone-pad"
+                onChangeText={val => props.handleOnChange(val, 'contact')}
+                validators={['phone']}
             />
         </>
     );

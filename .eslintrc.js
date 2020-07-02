@@ -185,7 +185,7 @@ module.exports = exports = {
                 },
             },
         ],
-        'wrap-regex': ERROR,
+        'wrap-regex': OFF,
     },
     overrides: [
         {

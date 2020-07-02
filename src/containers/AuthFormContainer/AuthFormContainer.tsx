@@ -24,21 +24,23 @@ type Props = {
     accountType: AccountTypes;
     navigate: () => void;
     state: AuthState;
-    handleOnChange: HandleChange;
+    handleOnChange: HandleStateChange<AuthState>;
 };
-type HandleChange = (p: keyof AuthState, val: string) => void;
 
 const AuthFormContainer: React.FC<Props> = props => {
     const signupForm = () => (
         <>
             {props.accountType === AccountTypes.SCHOOL && (
-                <AuthSchool handleOnChange={props.handleOnChange} />
+                <AuthSchool state={props.state} handleOnChange={props.handleOnChange} />
             )}
             {props.accountType === AccountTypes.PARENT && (
-                <AuthParent handleOnChange={props.handleOnChange} />
+                <AuthParent state={props.state} handleOnChange={props.handleOnChange} />
             )}
             {props.accountType === AccountTypes.TRANSPORTER && (
-                <AuthTransporter handleOnChange={props.handleOnChange} />
+                <AuthTransporter
+                    state={props.state}
+                    handleOnChange={props.handleOnChange}
+                />
             )}
         </>
     );
@@ -68,13 +70,18 @@ const AuthFormContainer: React.FC<Props> = props => {
                         style={AuthFormStyles.input}
                         placeholder="Email"
                         keyboardType="email-address"
-                        onChangeText={val => props.handleOnChange('email', val)}
+                        onChangeText={val => props.handleOnChange(val, 'email')}
+                        value={props.state.email}
+                        validators={['basic', 'email']}
                     />
                     <RegularInput
                         style={AuthFormStyles.input}
                         placeholder="Password"
                         secureTextEntry={true}
-                        onChangeText={val => props.handleOnChange('password', val)}
+                        onChangeText={val => props.handleOnChange(val, 'password')}
+                        value={props.state.password}
+                        //TODO: Use password validator
+                        validators={['basic']}
                     />
                     {props.isSignUp && signupForm()}
                     <View style={AuthFormStyles.submitButton}>

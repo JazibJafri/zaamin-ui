@@ -17,3 +17,6 @@ declare type FontFamily =
     | 'REGULAR'
     | 'LIGHT'
     | 'EXTRALIGHT';
+
+/* For state created by useReducer hook */
+declare type HandleStateChange<S = {}> = (value: string, property: keyof S) => void;

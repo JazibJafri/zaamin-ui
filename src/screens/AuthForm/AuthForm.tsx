@@ -35,7 +35,7 @@ const AuthForm: React.FC<Props> = ({ navigation, route }) => {
         navigation.navigate(navigateTo, props);
     };
 
-    const handleOnChange = (property: keyof AuthState, value: string) => {
+    const handleOnChange = (value: string, property: keyof AuthState) => {
         dispatch(authActionCreator(property, value));
     };
 
