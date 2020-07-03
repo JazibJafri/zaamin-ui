@@ -4,6 +4,7 @@ import {
     VALIDATION_PASSED,
     FIELD_IS_REQUIRED,
     INVALID_PHONE,
+    INVALID_PASSWORD,
 } from 'constants/text';
 
 type ValidatorResult = {
@@ -43,10 +44,19 @@ const phoneValidator = (value: string): ValidatorResult => {
     };
 };
 
+const passwordValidator = (value: string): ValidatorResult => {
+    const result = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/gm.test(value);
+    return {
+        result,
+        reason: result ? `Password ${VALIDATION_PASSED}` : INVALID_PASSWORD,
+    };
+};
+
 export const validators = {
     email: emailValidator,
     basic: basicValidator,
     phone: phoneValidator,
+    password: passwordValidator,
 };
 
 export type Validators = keyof typeof validators;

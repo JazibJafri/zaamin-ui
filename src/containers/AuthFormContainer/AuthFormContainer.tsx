@@ -80,8 +80,7 @@ const AuthFormContainer: React.FC<Props> = props => {
                         secureTextEntry={true}
                         onChangeText={val => props.handleOnChange(val, 'password')}
                         value={props.state.password}
-                        //TODO: Use password validator
-                        validators={['basic']}
+                        validators={['basic', 'password']}
                     />
                     {props.isSignUp && signupForm()}
                     <View style={AuthFormStyles.submitButton}>
