@@ -13,6 +13,7 @@ import { RegularText } from 'components/RegularText';
 interface OwnProps extends TextInputProps {
     validators: Validators[];
     onChangeText: (val: string) => void;
+    validateOn?: 'start-editing' | 'end-editing';
 }
 
 const RegularInput: React.FC<OwnProps> = ({
@@ -20,6 +21,7 @@ const RegularInput: React.FC<OwnProps> = ({
     onChangeText,
     value,
     validators: validatorTypes,
+    validateOn = 'end-editing',
     ...rest
 }) => {
     const [hasError, setHasError] = useState(false);
@@ -48,10 +50,12 @@ const RegularInput: React.FC<OwnProps> = ({
         setHasError(true);
     };
     const handleChange = (val: string) => {
-        const validation = validateInput(val);
         handleSuccess(val);
-        if (!validation.result) {
-            handleError(validation.reason);
+        if (validateOn === 'start-editing') {
+            const validation = validateInput(val);
+            if (!validation.result) {
+                handleError(validation.reason);
+            }
         }
         return;
     };

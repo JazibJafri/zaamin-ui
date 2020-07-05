@@ -65,7 +65,11 @@ export const AuthFormStyles = StyleSheet.create({
     },
     submitButton: {
         // ...border,
-        ...flexFullColumn,
+        flex: 1,
+    },
+    submitButtonView: {
+        // ...border,
+        flex: 1,
     },
     submitButtonStyle: {
         // ...border,
@@ -80,7 +84,9 @@ export const AuthFormStyles = StyleSheet.create({
         color: colors.white,
     },
     messageView: {
-        ...flexFullRow,
+        // ...border,
+        flex: 3,
+        flexDirection: 'row',
         paddingHorizontal: 10,
     },
     messageButtonStyle: {
