@@ -2,7 +2,12 @@ import React, { useEffect, useContext, useReducer } from 'react';
 import { ScrollView } from 'react-native';
 import { AppContext } from 'contexts/AppContext';
 import { AuthFormContainer } from 'containers/AuthFormContainer';
-import { AuthReducer, initialState, authActionCreator } from './AuthForm.reducer';
+import {
+    AuthReducer,
+    initialState,
+    authActionCreator,
+    AUTH_ACTIONS,
+} from './AuthForm.reducer';
 import * as Text from 'constants/text';
 import { AuthState } from './AuthForm.types';
 import { AccountTypes } from 'constants/app';
@@ -36,7 +41,11 @@ const AuthForm: React.FC<Props> = ({ navigation, route }) => {
     };
 
     const handleOnChange = (value: string, property: keyof AuthState) => {
-        dispatch(authActionCreator(property, value));
+        dispatch(authActionCreator(AUTH_ACTIONS.UPDATE_STATE, property, value));
+    };
+
+    const handleSubmit = () => {
+        console.log('State:', state);
     };
 
     return (
@@ -45,6 +54,7 @@ const AuthForm: React.FC<Props> = ({ navigation, route }) => {
                 {...params}
                 navigate={navigate}
                 state={state}
+                onSubmit={handleSubmit}
                 handleOnChange={handleOnChange}
             />
         </ScrollView>

@@ -1,4 +1,4 @@
-import { AuthState, AuthAction } from './AuthForm.types';
+import { AuthState, AuthAction, AuthActionTypes } from './AuthForm.types';
 export const initialState: AuthState = {
     firstName: '',
     lastName: '',
@@ -9,11 +9,17 @@ export const initialState: AuthState = {
     schoolName: '',
 };
 
+export enum AUTH_ACTIONS {
+    UPDATE_STATE = 'UPDATE_STATE',
+    RESET_STATE = 'RESET_STATE',
+}
+
 export const authActionCreator = (
+    type: AuthActionTypes,
     property: keyof AuthState,
     value: string,
 ): AuthAction => ({
-    type: 'UPDATE_STATE',
+    type,
     payload: {
         [property]: value,
     },
@@ -21,7 +27,7 @@ export const authActionCreator = (
 
 export const AuthReducer = (state: AuthState, action: AuthAction): AuthState => {
     switch (action.type) {
-        case 'UPDATE_STATE':
+        case AUTH_ACTIONS.UPDATE_STATE:
             return { ...state, ...action.payload };
         default: {
             return { ...state };

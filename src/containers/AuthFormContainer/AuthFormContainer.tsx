@@ -26,6 +26,7 @@ type Props = {
     navigate: () => void;
     state: AuthState;
     handleOnChange: HandleStateChange<AuthState>;
+    onSubmit: HandleSubmit;
 };
 
 const AuthFormContainer: React.FC<Props> = props => {
@@ -90,7 +91,7 @@ const AuthFormContainer: React.FC<Props> = props => {
                     <View style={AuthFormStyles.submitButtonView}>
                         <Button
                             title={props.title}
-                            onPress={() => null}
+                            onPress={props.onSubmit}
                             style={submitButton}
                             size="large"
                         />

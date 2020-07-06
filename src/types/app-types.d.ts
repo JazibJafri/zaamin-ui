@@ -20,3 +20,5 @@ declare type FontFamily =
 
 /* For state created by useReducer hook */
 declare type HandleStateChange<S = {}> = (value: string, property: keyof S) => void;
+
+declare type HandleSubmit = () => void;

@@ -1,3 +1,5 @@
+import { AUTH_ACTIONS } from './AuthForm.reducer';
+
 export interface AuthState extends ParentTransporterAuthState, SchoolAuthState {
     email: string;
     password: string;
@@ -13,5 +15,5 @@ interface SchoolAuthState {
     branchName: string;
 }
 
-export type AuthActionTypes = 'UPDATE_STATE';
+export type AuthActionTypes = keyof typeof AUTH_ACTIONS;
 export type AuthAction = ActionType<AuthActionTypes, Partial<AuthState>>;
