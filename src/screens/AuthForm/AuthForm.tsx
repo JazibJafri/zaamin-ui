@@ -40,7 +40,7 @@ const AuthForm: React.FC<Props> = ({ navigation, route }) => {
     };
 
     return (
-        <ScrollView>
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
             <AuthFormContainer
                 {...params}
                 navigate={navigate}

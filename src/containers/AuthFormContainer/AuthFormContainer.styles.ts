@@ -21,8 +21,10 @@ export const AuthFormStyles = StyleSheet.create({
     },
     heading: {
         ...centerContent,
+        // ...border,
         flex: 1,
         height: 70,
+        // paddingBottom: 10,
     },
     title: {
         color: logoColors.blue,
@@ -32,7 +34,8 @@ export const AuthFormStyles = StyleSheet.create({
         ...flexFullRow,
         // ...border,
         ...centerContent,
-        height: 70,
+        marginHorizontal: 40,
+        height: 30,
     },
     socialButtonStyle: {
         // ...border,
@@ -48,7 +51,12 @@ export const AuthFormStyles = StyleSheet.create({
         color: colors.black,
     },
     orText: {
+        // ...border,
         ...centerContent,
+    },
+    formContainer: {
+        // ...border,
+        flex: 1,
     },
     form: {
         // ...border,
@@ -56,7 +64,7 @@ export const AuthFormStyles = StyleSheet.create({
     },
     input: {
         marginTop: 15,
-        marginHorizontal: 10,
+        marginHorizontal: 40,
         paddingLeft: 10,
         paddingVertical: 2,
         borderWidth: 1,
@@ -65,14 +73,19 @@ export const AuthFormStyles = StyleSheet.create({
     },
     submitButton: {
         // ...border,
-        ...flexFullColumn,
+        flex: 1,
+    },
+    submitButtonView: {
+        // ...border,
+        // flex: 1,
     },
     submitButtonStyle: {
         // ...border,
         ...centerContent,
         height: 40,
-        marginHorizontal: 10,
-        marginVertical: 10,
+        marginHorizontal: 40,
+        marginTop: 20,
+        marginBottom: 10,
         backgroundColor: logoColors.blue,
         borderRadius: 30,
     },
@@ -80,8 +93,10 @@ export const AuthFormStyles = StyleSheet.create({
         color: colors.white,
     },
     messageView: {
-        ...flexFullRow,
-        paddingHorizontal: 10,
+        // ...border,
+        flex: 1,
+        flexDirection: 'row',
+        paddingHorizontal: 40,
     },
     messageButtonStyle: {
         marginLeft: 5,
