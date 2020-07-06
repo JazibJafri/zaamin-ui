@@ -57,7 +57,7 @@ const AuthFormContainer: React.FC<Props> = props => {
                 <RegularText size="huge" style={AuthFormStyles.title}>
                     {props.title}
                 </RegularText>
-                <RegularText style={AuthFormStyles.subText}>
+                <RegularText size="large" style={AuthFormStyles.subText}>
                     with your social network
                 </RegularText>
             </View>
