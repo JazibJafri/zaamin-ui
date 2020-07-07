@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux';
-import { userPreferencesReducer } from './user-preferences/reducers';
+import { userReducer } from './user';
+
+// Add reducer here for typescript
+export const reducers = {
+    userReducer: 'userReducer',
+};
 
 const rootReducer = combineReducers({
-    userPreferencesReducer,
+    userReducer,
 });
 
 export { rootReducer };

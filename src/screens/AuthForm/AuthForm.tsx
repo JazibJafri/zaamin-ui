@@ -37,7 +37,7 @@ const AuthForm: React.FC<Props> = ({ navigation, route }) => {
     const navigate = () => {
         const navigateTo = params.isSignUp ? 'AuthForm' : 'AppUsage';
         const props = { isSignUp: !params.isSignUp };
-        navigation.navigate(navigateTo, props);
+        navigation.push(navigateTo, props);
     };
 
     const handleOnChange = (value: string, property: keyof AuthState) => {

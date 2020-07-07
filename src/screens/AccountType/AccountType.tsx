@@ -30,7 +30,7 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
                     style={leftButton}
                     title={AccountTypes.PARENT}
                     onPress={() =>
-                        navigation.navigate('AuthForm', {
+                        navigation.push('AuthForm', {
                             ...routeParams,
                             accountType: AccountTypes.PARENT,
                         })
@@ -40,7 +40,7 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
                     style={middleButton}
                     title={AccountTypes.TRANSPORTER}
                     onPress={() =>
-                        navigation.navigate('AuthForm', {
+                        navigation.push('AuthForm', {
                             ...routeParams,
                             accountType: AccountTypes.TRANSPORTER,
                         })
@@ -50,7 +50,7 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
                     style={rightButton}
                     title={AccountTypes.SCHOOL}
                     onPress={() =>
-                        navigation.navigate('AuthForm', {
+                        navigation.push('AuthForm', {
                             ...routeParams,
                             accountType: AccountTypes.SCHOOL,
                         })

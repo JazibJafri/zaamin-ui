@@ -3,13 +3,12 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-community/async-storage';
 import Config from 'react-native-config';
 
-import { rootReducer } from './root-reducer';
-import { REDUCERS } from './constants';
+import { rootReducer, reducers } from './root-reducer';
 
 const persistConfig = {
     key: 'primary',
     storage: AsyncStorage,
-    whitelist: [REDUCERS.USER_PREFERENCES_REDUCER],
+    whitelist: [reducers.userReducer],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

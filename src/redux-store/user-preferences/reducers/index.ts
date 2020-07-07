@@ -1,1 +1,0 @@
-export { userPreferencesReducer } from './reducer';
