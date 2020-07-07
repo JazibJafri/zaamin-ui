@@ -1,12 +1,12 @@
 import { AUTH_ACTIONS } from './AuthForm.reducer';
 
-export interface AuthState extends ParentTransporterAuthState, SchoolAuthState {
+export interface AuthState extends PersonAuthState, SchoolAuthState {
     email: string;
     password: string;
     contact: string;
 }
 
-interface ParentTransporterAuthState {
+interface PersonAuthState {
     firstName: string;
     lastName: string;
 }

@@ -13,8 +13,7 @@ import { Button } from 'components/Button';
 import { AuthState } from 'screens/AuthForm/AuthForm.types';
 import { AccountTypes } from 'constants/app';
 import { AuthSchool } from './AuthSchool';
-import { AuthParent } from './AuthParent';
-import { AuthTransporter } from './AuthTransporter';
+import { AuthPerson } from './AuthPerson';
 import { getScreenHeight } from 'util/helpers';
 
 type Props = {
@@ -35,17 +34,10 @@ const AuthFormContainer: React.FC<Props> = props => {
     const screenHeight = getScreenHeight(window, statusBarHeight);
     const signupForm = () => (
         <>
-            {props.accountType === AccountTypes.SCHOOL && (
+            {props.accountType === AccountTypes.SCHOOL ? (
                 <AuthSchool state={props.state} handleOnChange={props.handleOnChange} />
-            )}
-            {props.accountType === AccountTypes.PARENT && (
-                <AuthParent state={props.state} handleOnChange={props.handleOnChange} />
-            )}
-            {props.accountType === AccountTypes.TRANSPORTER && (
-                <AuthTransporter
-                    state={props.state}
-                    handleOnChange={props.handleOnChange}
-                />
+            ) : (
+                <AuthPerson state={props.state} handleOnChange={props.handleOnChange} />
             )}
         </>
     );

@@ -8,7 +8,7 @@ type Props = {
     state: AuthState;
 };
 
-const AuthParent: React.FC<Props> = props => {
+const AuthPerson: React.FC<Props> = props => {
     return (
         <>
             <RegularInput
@@ -37,4 +37,4 @@ const AuthParent: React.FC<Props> = props => {
     );
 };
 
-export { AuthParent };
+export { AuthPerson };

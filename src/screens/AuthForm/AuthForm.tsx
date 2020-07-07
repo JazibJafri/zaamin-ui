@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useReducer } from 'react';
+import { useDispatch } from 'react-redux';
 import { ScrollView } from 'react-native';
 import { AppContext } from 'contexts/AppContext';
 import { AuthFormContainer } from 'containers/AuthFormContainer';
@@ -10,18 +11,23 @@ import {
 } from './AuthForm.reducer';
 import * as Text from 'constants/text';
 import { AuthState } from './AuthForm.types';
-import { AccountTypes } from 'constants/app';
+import { AccountTypes, AppUsageOptions } from 'constants/app';
+import { userAsyncActions } from 'redux-store/user/user-async';
 
 type Props = WithStackNavigation<'AuthForm'>;
 
 const AuthForm: React.FC<Props> = ({ navigation, route }) => {
     const { setIsAppLoaded } = useContext(AppContext);
-    const [state, dispatch] = useReducer<typeof AuthReducer>(AuthReducer, initialState);
+    const [state, authDispatch] = useReducer<typeof AuthReducer>(
+        AuthReducer,
+        initialState,
+    );
 
+    const dispatch = useDispatch();
     const params = {
         isSignUp: !!route.params?.isSignUp,
         accountType: route.params?.accountType || AccountTypes.PARENT,
-        appUsage: route.params?.appUsage,
+        appUsage: route.params?.appUsage || AppUsageOptions.PICNIC,
         title: route.params?.isSignUp ? Text.SIGNUP : Text.LOGIN,
         message: route.params?.isSignUp
             ? Text.ALREADY_REGISTERED
@@ -41,11 +47,21 @@ const AuthForm: React.FC<Props> = ({ navigation, route }) => {
     };
 
     const handleOnChange = (value: string, property: keyof AuthState) => {
-        dispatch(authActionCreator(AUTH_ACTIONS.UPDATE_STATE, property, value));
+        authDispatch(authActionCreator(AUTH_ACTIONS.UPDATE_STATE, property, value));
     };
 
     const handleSubmit = () => {
-        console.log('State:', state);
+        if (params.isSignUp) {
+            dispatch(
+                userAsyncActions.signUp({
+                    ...state,
+                    accountType: params.accountType,
+                    appUsage: params.appUsage,
+                }),
+            );
+        } else {
+            console.log('Login');
+        }
     };
 
     return (
