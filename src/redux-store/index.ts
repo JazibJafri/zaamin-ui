@@ -1,4 +1,5 @@
 import { persistStore, persistReducer } from 'redux-persist';
+import { useDispatch } from 'react-redux';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-community/async-storage';
 import Config from 'react-native-config';
@@ -25,3 +26,6 @@ const initStore = configureStore({
 const persistor = persistStore(initStore);
 
 export { initStore, persistor };
+
+export type AppDispatch = typeof initStore.dispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch>();

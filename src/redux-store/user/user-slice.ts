@@ -1,9 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { userAsyncActions } from './user-async';
+import { userSliceName } from './user-constants';
 
 const { login, signUp } = userAsyncActions;
-
-const userSliceName = 'user';
 
 const userSlice = createSlice({
     name: userSliceName,

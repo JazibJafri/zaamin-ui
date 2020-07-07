@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useReducer } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from 'redux-store';
 import { ScrollView } from 'react-native';
 import { AppContext } from 'contexts/AppContext';
 import { AuthFormContainer } from 'containers/AuthFormContainer';
@@ -23,7 +23,7 @@ const AuthForm: React.FC<Props> = ({ navigation, route }) => {
         initialState,
     );
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const params = {
         isSignUp: !!route.params?.isSignUp,
         accountType: route.params?.accountType || AccountTypes.PARENT,
