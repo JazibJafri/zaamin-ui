@@ -16,6 +16,7 @@ const userSlice = createSlice({
             return state;
         });
         builder.addCase(signUp.fulfilled, (state, action) => {
+            console.log('Result:', action.payload);
             return state;
         });
     },

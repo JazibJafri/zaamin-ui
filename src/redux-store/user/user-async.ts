@@ -2,6 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AuthState } from 'screens/AuthForm/AuthForm.types';
 import { AppUsageOptions, AccountTypes } from 'constants/app';
 import { urls } from './user-constants';
+import { request } from 'services/api-request';
+import { API_URLS } from 'services/api-urls';
 
 const login = createAsyncThunk(urls.login, async (userId: string, thunkAPI) => {
     // const response = await userAPI.fetchById(userId);
@@ -14,8 +16,11 @@ interface SignUpPayload extends AuthState {
 }
 
 const signUp = createAsyncThunk(urls.signUp, async (payload: SignUpPayload) => {
-    const response = await fetch('https://api.github.com/users/1');
-    return await response.json();
+    const response = await request({
+        url: API_URLS.USER.signUp,
+        options: { body: payload },
+    });
+    return response;
 });
 
 export const userAsyncActions = {
