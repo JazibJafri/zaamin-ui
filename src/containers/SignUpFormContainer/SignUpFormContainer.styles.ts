@@ -32,7 +32,8 @@ export const SignUpFormStyles = StyleSheet.create({
         ...flexFullRow,
         // ...border,
         ...centerContent,
-        height: 70,
+        marginHorizontal: 40,
+        height: 30,
     },
     socialButtonStyle: {
         // ...border,
@@ -50,13 +51,17 @@ export const SignUpFormStyles = StyleSheet.create({
     orText: {
         ...centerContent,
     },
+    formContainer: {
+        // ...border,
+        flex: 1,
+    },
     form: {
         // ...border,
         flex: 4,
     },
     input: {
         marginTop: 15,
-        marginHorizontal: 10,
+        marginHorizontal: 40,
         paddingLeft: 10,
         paddingVertical: 2,
         borderWidth: 1,
@@ -69,14 +74,15 @@ export const SignUpFormStyles = StyleSheet.create({
     },
     submitButtonView: {
         // ...border,
-        flex: 1,
+        // flex: 1,
     },
     submitButtonStyle: {
         // ...border,
         ...centerContent,
         height: 40,
-        marginHorizontal: 10,
-        marginVertical: 10,
+        marginHorizontal: 40,
+        marginTop: 20,
+        marginBottom: 10,
         backgroundColor: logoColors.blue,
         borderRadius: 30,
     },
@@ -85,9 +91,9 @@ export const SignUpFormStyles = StyleSheet.create({
     },
     messageView: {
         // ...border,
-        flex: 3,
+        flex: 1,
         flexDirection: 'row',
-        paddingHorizontal: 10,
+        paddingHorizontal: 40,
     },
     messageButtonStyle: {
         marginLeft: 5,

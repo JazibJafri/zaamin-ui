@@ -21,10 +21,8 @@ export const LoginFormStyles = StyleSheet.create({
     },
     heading: {
         ...centerContent,
-        // ...border,
         flex: 1,
         height: 70,
-        // paddingBottom: 10,
     },
     title: {
         color: logoColors.blue,
@@ -51,7 +49,6 @@ export const LoginFormStyles = StyleSheet.create({
         color: colors.black,
     },
     orText: {
-        // ...border,
         ...centerContent,
     },
     formContainer: {
