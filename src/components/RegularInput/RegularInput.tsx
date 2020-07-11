@@ -12,7 +12,7 @@ import { RegularText } from 'components/RegularText';
 
 interface OwnProps extends TextInputProps {
     validators: Validators[];
-    onChangeText: (val: string) => void;
+    onChangeText: (val: string, err?: boolean) => void;
     validateOn?: 'start-editing' | 'end-editing';
 }
 
@@ -40,29 +40,30 @@ const RegularInput: React.FC<OwnProps> = ({
         });
         return result;
     };
-    const handleSuccess = (val: string) => {
+    const handleSuccess = () => {
         setHasError(false);
         setErrorMessage('');
-        onChangeText(val);
     };
     const handleError = (error: string) => {
         setErrorMessage(error);
         setHasError(true);
     };
     const handleChange = (val: string) => {
-        handleSuccess(val);
+        const validation = validateInput(val);
         if (validateOn === 'start-editing') {
-            const validation = validateInput(val);
             if (!validation.result) {
                 handleError(validation.reason);
+            } else {
+                handleSuccess();
             }
         }
+        onChangeText(val, !validation.result);
         return;
     };
     const handleBlur = (evt: NativeSyntheticEvent<TextInputEndEditingEventData>) => {
         const validation = validateInput(evt.nativeEvent.text);
         if (validation.result) {
-            handleSuccess(evt.nativeEvent.text);
+            handleSuccess();
         } else {
             handleError(validation.reason);
         }

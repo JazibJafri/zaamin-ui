@@ -2,7 +2,8 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AccountType } from 'screens/AccountType';
 import { AppUsage } from 'screens/AppUsage';
-import { AuthForm } from 'screens/AuthForm';
+import { SignUpForm } from 'screens/SignUpForm';
+import { LoginForm } from 'screens/LoginForm';
 import { Header } from 'components/Header';
 
 const RootStack = createStackNavigator();
@@ -10,7 +11,7 @@ const RootStack = createStackNavigator();
 const RootStackNavigator = () => {
     return (
         <RootStack.Navigator
-            initialRouteName="AuthForm"
+            initialRouteName="LoginForm"
             screenOptions={{
                 headerStyle: {
                     height: 50,
@@ -18,8 +19,15 @@ const RootStackNavigator = () => {
             }}
         >
             <RootStack.Screen
-                name="AuthForm"
-                component={AuthForm}
+                name="LoginForm"
+                component={LoginForm}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <RootStack.Screen
+                name="SignUpForm"
+                component={SignUpForm}
                 options={{
                     headerShown: false,
                 }}
@@ -28,7 +36,6 @@ const RootStackNavigator = () => {
                 name="AppUsage"
                 component={AppUsage}
                 options={{
-                    // headerShown: false,
                     headerTitle: () => <Header title="Select Account Type" />,
                 }}
             />

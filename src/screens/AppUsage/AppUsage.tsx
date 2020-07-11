@@ -27,8 +27,7 @@ const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => 
                 <Button
                     title={AppUsageOptions.PICNIC}
                     onPress={() =>
-                        navigation.push('AuthForm', {
-                            isSignUp: true,
+                        navigation.push('SignUpForm', {
                             appUsage: AppUsageOptions.PICNIC,
                         })
                     }

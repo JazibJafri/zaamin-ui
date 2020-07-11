@@ -13,10 +13,6 @@ import { AppUsageOptions, AccountTypes } from 'constants/app';
 const { container, titleView, signupText, buttonsView } = AccountTypeStyles;
 
 const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation }) => {
-    const routeParams = {
-        isSignUp: true,
-        appUsage: AppUsageOptions.SCHOOL,
-    };
     return (
         <View style={container}>
             <View style={titleView}>
@@ -30,8 +26,8 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
                     style={leftButton}
                     title={AccountTypes.PARENT}
                     onPress={() =>
-                        navigation.push('AuthForm', {
-                            ...routeParams,
+                        navigation.push('SignUpForm', {
+                            appUsage: AppUsageOptions.SCHOOL,
                             accountType: AccountTypes.PARENT,
                         })
                     }
@@ -40,8 +36,8 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
                     style={middleButton}
                     title={AccountTypes.TRANSPORTER}
                     onPress={() =>
-                        navigation.push('AuthForm', {
-                            ...routeParams,
+                        navigation.push('SignUpForm', {
+                            appUsage: AppUsageOptions.SCHOOL,
                             accountType: AccountTypes.TRANSPORTER,
                         })
                     }
@@ -50,8 +46,8 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
                     style={rightButton}
                     title={AccountTypes.SCHOOL}
                     onPress={() =>
-                        navigation.push('AuthForm', {
-                            ...routeParams,
+                        navigation.push('SignUpForm', {
+                            appUsage: AppUsageOptions.SCHOOL,
                             accountType: AccountTypes.SCHOOL,
                         })
                     }

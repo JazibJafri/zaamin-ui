@@ -4,7 +4,7 @@ import { globalStyles } from 'styles/app.styles';
 
 const { border, centerContent, flexFullColumn, flexFullRow } = globalStyles;
 
-export const AuthFormStyles = StyleSheet.create({
+export const LoginFormStyles = StyleSheet.create({
     container: {
         ...flexFullColumn,
         // ...border,
@@ -107,16 +107,16 @@ export const AuthFormStyles = StyleSheet.create({
 });
 
 export const messageButton = {
-    button: AuthFormStyles.messageButtonStyle,
-    title: AuthFormStyles.messageButtonText,
+    button: LoginFormStyles.messageButtonStyle,
+    title: LoginFormStyles.messageButtonText,
 };
 
 export const socialButtons = {
-    title: AuthFormStyles.socialButtonText,
-    button: AuthFormStyles.socialButtonStyle,
+    title: LoginFormStyles.socialButtonText,
+    button: LoginFormStyles.socialButtonStyle,
 };
 
 export const submitButton = {
-    title: AuthFormStyles.submitButtonText,
-    button: AuthFormStyles.submitButtonStyle,
+    title: LoginFormStyles.submitButtonText,
+    button: LoginFormStyles.submitButtonStyle,
 };

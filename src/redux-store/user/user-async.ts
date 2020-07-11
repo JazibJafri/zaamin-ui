@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthState } from 'screens/AuthForm/AuthForm.types';
+import { SignUpState } from 'screens/SignUpForm/SignUpForm.types';
 import { AppUsageOptions, AccountTypes } from 'constants/app';
 import { urls } from './user-constants';
 import { request } from 'services/api-request';
@@ -10,7 +10,7 @@ const login = createAsyncThunk(urls.login, async (userId: string, thunkAPI) => {
     // return response.data;
 });
 
-interface SignUpPayload extends AuthState {
+interface SignUpPayload extends SignUpState {
     appUsage: AppUsageOptions;
     accountType: AccountTypes;
 }

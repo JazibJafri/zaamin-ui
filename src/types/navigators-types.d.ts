@@ -18,8 +18,8 @@ declare global {
     type RootStackParamList = {
         AppUsage: undefined;
         AccountType: undefined;
-        AuthForm: {
-            isSignUp?: boolean;
+        LoginForm: undefined;
+        SignUpForm: {
             appUsage?: AppUsageOptions;
             accountType?: AccountTypes;
         };

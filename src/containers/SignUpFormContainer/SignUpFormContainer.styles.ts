@@ -1,0 +1,113 @@
+import { StyleSheet } from 'react-native';
+import { logoColors, colors } from 'styles/constant.styles';
+import { globalStyles } from 'styles/app.styles';
+
+const { border, centerContent, flexFullColumn, flexFullRow } = globalStyles;
+
+export const SignUpFormStyles = StyleSheet.create({
+    container: {
+        ...flexFullColumn,
+        // ...border,
+    },
+    imageView: {
+        ...flexFullRow,
+        // ...border,
+        height: 70,
+    },
+    image: {
+        flex: 1,
+        height: undefined,
+        resizeMode: 'contain',
+    },
+    heading: {
+        ...centerContent,
+        flex: 1,
+        height: 70,
+    },
+    title: {
+        color: logoColors.blue,
+    },
+    subText: {},
+    socialButtons: {
+        ...flexFullRow,
+        // ...border,
+        ...centerContent,
+        height: 70,
+    },
+    socialButtonStyle: {
+        // ...border,
+        ...flexFullRow,
+        ...centerContent,
+        height: 40,
+        marginHorizontal: 10,
+        backgroundColor: logoColors.orange,
+        borderRadius: 30,
+    },
+    socialButtonText: {
+        fontSize: 17,
+        color: colors.black,
+    },
+    orText: {
+        ...centerContent,
+    },
+    form: {
+        // ...border,
+        flex: 4,
+    },
+    input: {
+        marginTop: 15,
+        marginHorizontal: 10,
+        paddingLeft: 10,
+        paddingVertical: 2,
+        borderWidth: 1,
+        borderColor: logoColors.blue,
+        borderRadius: 5,
+    },
+    submitButton: {
+        // ...border,
+        flex: 1,
+    },
+    submitButtonView: {
+        // ...border,
+        flex: 1,
+    },
+    submitButtonStyle: {
+        // ...border,
+        ...centerContent,
+        height: 40,
+        marginHorizontal: 10,
+        marginVertical: 10,
+        backgroundColor: logoColors.blue,
+        borderRadius: 30,
+    },
+    submitButtonText: {
+        color: colors.white,
+    },
+    messageView: {
+        // ...border,
+        flex: 3,
+        flexDirection: 'row',
+        paddingHorizontal: 10,
+    },
+    messageButtonStyle: {
+        marginLeft: 5,
+    },
+    messageButtonText: {
+        color: logoColors.blue,
+    },
+});
+
+export const messageButton = {
+    button: SignUpFormStyles.messageButtonStyle,
+    title: SignUpFormStyles.messageButtonText,
+};
+
+export const socialButtons = {
+    title: SignUpFormStyles.socialButtonText,
+    button: SignUpFormStyles.socialButtonStyle,
+};
+
+export const submitButton = {
+    title: SignUpFormStyles.submitButtonText,
+    button: SignUpFormStyles.submitButtonStyle,
+};

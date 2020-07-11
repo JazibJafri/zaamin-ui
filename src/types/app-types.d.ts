@@ -18,7 +18,11 @@ declare type FontFamily =
     | 'LIGHT'
     | 'EXTRALIGHT';
 
-/* For state created by useReducer hook */
-declare type HandleStateChange<S = {}> = (value: string, property: keyof S) => void;
+/* For state created by useReducer hook for forms*/
+declare type HandleStateChange<S = {}> = (
+    value: string,
+    property: keyof S,
+    err?: boolean,
+) => void;
 
 declare type HandleSubmit = () => void;
