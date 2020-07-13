@@ -212,6 +212,7 @@ implementation 'androidx.appcompat:appcompat:1.0.0'
 ```
 
 Example:
+
 ```
 dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
@@ -233,6 +234,7 @@ compile 'com.android.support:appcompat-v7:28.0.0
 ```
 
 Example:
+
 ```
 dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
@@ -246,7 +248,7 @@ dependencies {
 ### 8. Quit metro bundler and exit builds, if they are running
 
 Restart build, let the metro bundler finish when it opens your app, after you see
-your first screen *(not the splash screen)*, close and clear the app. Reopen it.
+your first screen _(not the splash screen)_, close and clear the app. Reopen it.
 
 You should now see your splash screen, and then a white screen.
 If you want to fix this white screen, keep reading.
@@ -255,7 +257,8 @@ If you want to fix this white screen, keep reading.
 
 ### 9. Install `react-native-splash-screen@3.2.0`
 
-Inside your project run 
+Inside your project run
+
 ```
 npm install react-native-splash-screen@3.2.0
 ```
@@ -270,6 +273,7 @@ Add these imports
 import org.devio.rn.splashscreen.SplashScreen;
 import android.os.Bundle;
 ```
+
 And add this method
 
 ```java
@@ -404,6 +408,7 @@ Update this line
 ```java
     SplashScreen.show(this);
 ```
+
 to this
 
 ```java
@@ -444,5 +449,6 @@ And check if you have these lines
 android.useAndroidX=true
 android.enableJetifier=true
 ```
+
 If you **have** the above lines, you are using **AndroidX**
 If not, you are using v7 (deprecated)

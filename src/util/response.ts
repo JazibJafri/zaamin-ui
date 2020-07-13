@@ -41,12 +41,12 @@ const createErrorResponse = ({ code, data, error }: ResponseParams): ResponseObj
 });
 
 const responseCreator = async (response: Response) => {
-    if (responseIsSuccess(response.status))
+    if (responseIsSuccess(response.status)) {
         return createSuccessResponse({
             code: response.status,
             data: await response.json(),
         });
-
+    }
     return createErrorResponse({
         code: response.status,
         error: new Error(response.statusText),

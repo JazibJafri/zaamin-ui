@@ -10,10 +10,11 @@ import Config from 'react-native-config';
  *
  */
 export const outputToConsole = (message: unknown, defaultValue?: string) => {
-    if (Config.ENV === 'development')
+    if (Config.ENV === 'development') {
         console.log(
             '\x1b[33m%s\x1b[0m', //custom colored logs
             defaultValue?.toUpperCase() || 'PRINT',
             `:::${JSON.stringify(message)}`,
         );
+    }
 };
