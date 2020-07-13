@@ -13,10 +13,11 @@ const userSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addCase(login.fulfilled, (state, action) => {
+            console.log('Login result', action.payload);
             return state;
         });
         builder.addCase(signUp.fulfilled, (state, action) => {
-            console.log('Result:', action.payload);
+            console.log('Signup Result:', action.payload);
             return state;
         });
     },

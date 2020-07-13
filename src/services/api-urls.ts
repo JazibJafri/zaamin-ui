@@ -4,5 +4,6 @@ export const API_URLS = {
     },
     USER: {
         signUp: '/v1/signup',
+        login: '/v1/login',
     },
 };

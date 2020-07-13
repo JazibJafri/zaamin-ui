@@ -4,10 +4,16 @@ import { AppUsageOptions, AccountTypes } from 'constants/app';
 import { urls } from './user-constants';
 import { request } from 'services/api-request';
 import { API_URLS } from 'services/api-urls';
+import { LoginState } from 'screens/LoginForm/LoginForm.types';
 
-const login = createAsyncThunk(urls.login, async (userId: string, thunkAPI) => {
-    // const response = await userAPI.fetchById(userId);
-    // return response.data;
+type LoginPayload = Pick<LoginState, 'email' | 'password'>;
+
+const login = createAsyncThunk(urls.login, async (payload: LoginPayload) => {
+    const response = await request({
+        url: API_URLS.USER.login,
+        options: { body: payload, method: 'POST' },
+    });
+    return response;
 });
 
 interface SignUpPayload extends SignUpState {
@@ -18,7 +24,7 @@ interface SignUpPayload extends SignUpState {
 const signUp = createAsyncThunk(urls.signUp, async (payload: SignUpPayload) => {
     const response = await request({
         url: API_URLS.USER.signUp,
-        options: { body: payload },
+        options: { body: payload, method: 'POST' },
     });
     return response;
 });
