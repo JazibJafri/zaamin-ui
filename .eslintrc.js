@@ -182,6 +182,7 @@ module.exports = exports = {
                 overrides: {
                     '!': false,
                     '-': false,
+                    '++': false,
                 },
             },
         ],

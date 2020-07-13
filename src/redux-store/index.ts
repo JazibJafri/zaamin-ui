@@ -1,7 +1,9 @@
 import { persistStore, persistReducer } from 'redux-persist';
 import { useDispatch } from 'react-redux';
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { MiddlewareAPI, Middleware } from 'redux';
+import { configureStore, getDefaultMiddleware, PayloadAction } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-community/async-storage';
+import { applicationActions } from 'redux-store/application';
 import Config from 'react-native-config';
 
 import { rootReducer, reducers } from './root-reducer';
@@ -14,12 +16,31 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+const asyncTasksMiddleware: Middleware = ({
+    dispatch,
+}: MiddlewareAPI<AppDispatch>) => next => (action: PayloadAction) => {
+    const { type } = action;
+    if (type.includes('pending')) {
+        dispatch(
+            applicationActions.addAsyncTaskAction({ type: type.replace('/pending', '') }),
+        );
+    }
+    if (type.includes('fulfilled') || type.includes('rejected')) {
+        dispatch(
+            applicationActions.removeAsyncTaskAction({
+                type: type.replace('/fulfilled', '').replace('/rejected', ''),
+            }),
+        );
+    }
+    return next(action);
+};
+
 const initStore = configureStore({
     reducer: persistedReducer,
     preloadedState: {},
     middleware: getDefaultMiddleware({
         serializableCheck: false,
-    }),
+    }).concat(asyncTasksMiddleware),
     devTools: Config.ENV !== 'production',
 });
 
