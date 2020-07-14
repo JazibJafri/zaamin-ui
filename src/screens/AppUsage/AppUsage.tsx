@@ -20,7 +20,7 @@ const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => 
                 <Button
                     title={AppUsageOptions.SCHOOL}
                     onPress={() => navigation.push('AccountType')}
-                    style={buttons}
+                    buttonStyle={buttons}
                     size="large"
                     icon={icon}
                 />
@@ -31,7 +31,7 @@ const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => 
                             appUsage: AppUsageOptions.PICNIC,
                         })
                     }
-                    style={buttons}
+                    buttonStyle={buttons}
                     size="large"
                     icon={icon}
                 />

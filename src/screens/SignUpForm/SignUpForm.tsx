@@ -68,7 +68,13 @@ const SignUpForm: React.FC<Props> = ({ navigation, route }) => {
         if (isFormValid()) {
             dispatch(
                 userAsyncActions.signUp({
-                    ...state,
+                    email: state.email,
+                    password: state.password,
+                    contact: state.contact,
+                    firstName: state.firstName,
+                    lastName: state.lastName,
+                    schoolName: state.schoolName,
+                    branchName: state.branchName,
                     accountType: params.accountType,
                     appUsage: params.appUsage,
                 }),
@@ -79,7 +85,10 @@ const SignUpForm: React.FC<Props> = ({ navigation, route }) => {
     };
 
     return (
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            keyboardShouldPersistTaps="handled"
+        >
             <SignUpFormContainer
                 {...params}
                 navigate={navigate}

@@ -46,8 +46,12 @@ const LoginFormContainer: React.FC<Props> = props => {
                 </RegularText>
             </View>
             <View style={LoginFormStyles.socialButtons}>
-                <Button title="Google" style={socialButtons} onPress={() => null} />
-                <Button title="Facebook" style={socialButtons} onPress={() => null} />
+                <Button title="Google" buttonStyle={socialButtons} onPress={() => null} />
+                <Button
+                    title="Facebook"
+                    buttonStyle={socialButtons}
+                    onPress={() => null}
+                />
             </View>
             <View style={LoginFormStyles.orText}>
                 <RegularText>OR</RegularText>
@@ -76,14 +80,14 @@ const LoginFormContainer: React.FC<Props> = props => {
                         <Button
                             title={Text.LOGIN}
                             onPress={props.onSubmit}
-                            style={submitButton}
+                            buttonStyle={submitButton}
                             size="large"
                         />
                     </View>
                     <View style={LoginFormStyles.messageView}>
                         <RegularText>{Text.DONT_HAVE_AN_ACCOUNT}</RegularText>
                         <Button
-                            style={messageButton}
+                            buttonStyle={messageButton}
                             title={Text.SIGNUP}
                             onPress={props.navigate}
                         />

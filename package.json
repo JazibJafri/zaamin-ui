@@ -6,7 +6,6 @@
         "android": "react-native run-android",
         "android-prod": "SET ENVFILE=.env.prod && react-native run-android",
         "dev-bundle": "react-native bundle --dev false --platform android --entry-file index.js --bundle-output ./android/app/build/intermediates/assets/debug/index.android.bundle --assets-dest ./android/app/build/intermediates/res/merged/debug",
-        "dev-assemble": "cd android && gradlew assembleDebug && gradlew assembleRelease",
         "ios": "react-native run-ios",
         "start": "react-native start",
         "test": "jest",

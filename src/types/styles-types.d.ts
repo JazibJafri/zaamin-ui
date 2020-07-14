@@ -4,7 +4,7 @@ declare global {
     interface ButtonProps {
         onPress: () => unknown;
         title: string;
-        style?: {
+        buttonStyle?: {
             button?: ViewStyle;
             title?: TextStyle;
         };
@@ -14,8 +14,9 @@ declare global {
             size?: number;
             style?: ViewStyle | TextStyle;
         };
+        dismissKeyboard?: boolean;
     }
-    type ButtonStyleType = Pick<ButtonProps, 'style'>;
+    type ButtonStyleType = Pick<ButtonProps, 'buttonStyle'>;
 
     interface WithTextProps extends TextProps {
         size?: FontTypes;

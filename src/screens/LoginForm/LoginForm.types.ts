@@ -7,5 +7,7 @@ export interface LoginState {
     passwordError: boolean;
 }
 
+export type LoginFormData = Omit<LoginState, 'emailError' | 'passwordError'>;
+
 export type LoginActionTypes = keyof typeof LOGIN_ACTIONS;
 export type LoginAction = ActionType<LoginActionTypes, Partial<LoginState>>;

@@ -22,5 +22,16 @@ interface SchoolSignUpState {
     branchNameError: boolean;
 }
 
+export type SignUpFormData = Omit<
+    SignUpState,
+    | 'emailError'
+    | 'passwordError'
+    | 'contactError'
+    | 'firstNameError'
+    | 'lastNameError'
+    | 'schoolNameError'
+    | 'branchNameError'
+>;
+
 export type SignUpActionTypes = keyof typeof SIGNUP_ACTIONS;
 export type SignUpAction = ActionType<SignUpActionTypes, Partial<SignUpState>>;

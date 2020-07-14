@@ -4,7 +4,6 @@ import AnimatedSplash from 'react-native-animated-splash-screen';
 import { Images } from 'images';
 import { logoColors } from 'styles/constant.styles';
 import { AppContext } from 'contexts/AppContext';
-import { AppWrapper } from 'components/AppWrapper';
 
 const Splash: React.FC = ({ children }) => {
     const { isAppLoaded } = useContext(AppContext);
@@ -19,7 +18,7 @@ const Splash: React.FC = ({ children }) => {
                 logoWidth={100}
                 disableBackgroundImage={true}
             >
-                <AppWrapper>{children}</AppWrapper>
+                {children}
             </AnimatedSplash>
         </>
     );

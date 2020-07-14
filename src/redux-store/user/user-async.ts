@@ -1,14 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { SignUpState } from 'screens/SignUpForm/SignUpForm.types';
+import { SignUpFormData } from 'screens/SignUpForm/SignUpForm.types';
 import { AppUsageOptions, AccountTypes } from 'constants/app';
 import { urls } from './user-constants';
 import { request } from 'services/api-request';
 import { API_URLS } from 'services/api-urls';
-import { LoginState } from 'screens/LoginForm/LoginForm.types';
+import { LoginFormData } from 'screens/LoginForm/LoginForm.types';
 
-type LoginPayload = Pick<LoginState, 'email' | 'password'>;
-
-const login = createAsyncThunk(urls.login, async (payload: LoginPayload) => {
+const login = createAsyncThunk(urls.login, async (payload: LoginFormData) => {
     const response = await request({
         url: API_URLS.USER.login,
         options: { body: payload, method: 'POST' },
@@ -16,7 +14,7 @@ const login = createAsyncThunk(urls.login, async (payload: LoginPayload) => {
     return response;
 });
 
-interface SignUpPayload extends SignUpState {
+interface SignUpPayload extends SignUpFormData {
     appUsage: AppUsageOptions;
     accountType: AccountTypes;
 }

@@ -43,8 +43,12 @@ const SignUpFormContainer: React.FC<Props> = props => {
                 </RegularText>
             </View>
             <View style={SignUpFormStyles.socialButtons}>
-                <Button title="Google" style={socialButtons} onPress={() => null} />
-                <Button title="Facebook" style={socialButtons} onPress={() => null} />
+                <Button title="Google" buttonStyle={socialButtons} onPress={() => null} />
+                <Button
+                    title="Facebook"
+                    buttonStyle={socialButtons}
+                    onPress={() => null}
+                />
             </View>
             <View style={SignUpFormStyles.orText}>
                 <RegularText>OR</RegularText>
@@ -84,14 +88,15 @@ const SignUpFormContainer: React.FC<Props> = props => {
                         <Button
                             title={Text.SIGNUP}
                             onPress={props.onSubmit}
-                            style={submitButton}
+                            buttonStyle={submitButton}
                             size="large"
+                            dismissKeyboard={true}
                         />
                     </View>
                     <View style={SignUpFormStyles.messageView}>
                         <RegularText>{Text.ALREADY_REGISTERED}</RegularText>
                         <Button
-                            style={messageButton}
+                            buttonStyle={messageButton}
                             title={Text.LOGIN}
                             onPress={props.navigate}
                         />

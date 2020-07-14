@@ -23,7 +23,7 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
             </View>
             <View style={buttonsView}>
                 <Button
-                    style={leftButton}
+                    buttonStyle={leftButton}
                     title={AccountTypes.PARENT}
                     onPress={() =>
                         navigation.push('SignUpForm', {
@@ -33,7 +33,7 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
                     }
                 />
                 <Button
-                    style={middleButton}
+                    buttonStyle={middleButton}
                     title={AccountTypes.TRANSPORTER}
                     onPress={() =>
                         navigation.push('SignUpForm', {
@@ -43,7 +43,7 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
                     }
                 />
                 <Button
-                    style={rightButton}
+                    buttonStyle={rightButton}
                     title={AccountTypes.SCHOOL}
                     onPress={() =>
                         navigation.push('SignUpForm', {
