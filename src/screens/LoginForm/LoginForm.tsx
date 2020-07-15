@@ -44,7 +44,10 @@ const LoginForm: React.FC<Props> = ({ navigation }) => {
     };
 
     return (
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            keyboardShouldPersistTaps="handled"
+        >
             <LoginFormContainer
                 navigate={navigate}
                 formState={state}

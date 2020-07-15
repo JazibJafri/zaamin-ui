@@ -82,6 +82,7 @@ const LoginFormContainer: React.FC<Props> = props => {
                             onPress={props.onSubmit}
                             buttonStyle={submitButton}
                             size="large"
+                            dismissKeyboard={true}
                         />
                     </View>
                     <View style={LoginFormStyles.messageView}>
