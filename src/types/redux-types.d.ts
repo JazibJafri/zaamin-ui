@@ -1,13 +1,11 @@
-import { Dispatch, Action } from '@reduxjs/toolkit';
+import { Action } from '@reduxjs/toolkit';
+import { RootState as RS } from 'redux-store/root-reducer';
+import { AppDispatch } from 'redux-store';
 
 declare global {
-    interface RootState {
-        userPreferencesReducer: UserPreferences;
-    }
+    type RootState = RS;
 
-    interface WithDispatch {
-        dispatch: Dispatch<ActionCreator>;
-    }
+    type WithAppDispatch = AppDispatch;
 
     interface ActionCreator<ActionType = string, PayloadType = unknown> {
         type: ActionType;

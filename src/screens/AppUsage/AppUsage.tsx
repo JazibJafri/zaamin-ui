@@ -19,20 +19,19 @@ const AppUsage: React.FC<WithStackNavigation<'AppUsage'>> = ({ navigation }) => 
             <View style={AppUsageStyles.buttonView}>
                 <Button
                     title={AppUsageOptions.SCHOOL}
-                    onPress={() => navigation.navigate('AccountType')}
-                    style={buttons}
+                    onPress={() => navigation.push('AccountType')}
+                    buttonStyle={buttons}
                     size="large"
                     icon={icon}
                 />
                 <Button
                     title={AppUsageOptions.PICNIC}
                     onPress={() =>
-                        navigation.navigate('AuthForm', {
-                            isSignUp: true,
+                        navigation.push('SignUpForm', {
                             appUsage: AppUsageOptions.PICNIC,
                         })
                     }
-                    style={buttons}
+                    buttonStyle={buttons}
                     size="large"
                     icon={icon}
                 />

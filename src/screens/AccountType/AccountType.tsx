@@ -13,10 +13,6 @@ import { AppUsageOptions, AccountTypes } from 'constants/app';
 const { container, titleView, signupText, buttonsView } = AccountTypeStyles;
 
 const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation }) => {
-    const routeParams = {
-        isSignUp: true,
-        appUsage: AppUsageOptions.SCHOOL,
-    };
     return (
         <View style={container}>
             <View style={titleView}>
@@ -27,31 +23,31 @@ const AccountType: React.FC<WithStackNavigation<'AccountType'>> = ({ navigation 
             </View>
             <View style={buttonsView}>
                 <Button
-                    style={leftButton}
+                    buttonStyle={leftButton}
                     title={AccountTypes.PARENT}
                     onPress={() =>
-                        navigation.navigate('AuthForm', {
-                            ...routeParams,
+                        navigation.push('SignUpForm', {
+                            appUsage: AppUsageOptions.SCHOOL,
                             accountType: AccountTypes.PARENT,
                         })
                     }
                 />
                 <Button
-                    style={middleButton}
+                    buttonStyle={middleButton}
                     title={AccountTypes.TRANSPORTER}
                     onPress={() =>
-                        navigation.navigate('AuthForm', {
-                            ...routeParams,
+                        navigation.push('SignUpForm', {
+                            appUsage: AppUsageOptions.SCHOOL,
                             accountType: AccountTypes.TRANSPORTER,
                         })
                     }
                 />
                 <Button
-                    style={rightButton}
+                    buttonStyle={rightButton}
                     title={AccountTypes.SCHOOL}
                     onPress={() =>
-                        navigation.navigate('AuthForm', {
-                            ...routeParams,
+                        navigation.push('SignUpForm', {
+                            appUsage: AppUsageOptions.SCHOOL,
                             accountType: AccountTypes.SCHOOL,
                         })
                     }

@@ -13,15 +13,14 @@ import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 
 /* Absolute Import */
 import { initStore, persistor } from 'redux-store';
-import { RootStackNavigator } from 'navigators/Stacks/RootStack';
 import { FontContextProvider } from 'contexts/FontContext';
 import { AppContextProvider } from 'contexts/AppContext';
 import { Splash } from 'screens/Splash';
+import { AppWrapper } from 'components/AppWrapper';
 
 const App: React.FC = () => {
     useEffect(() => {
@@ -37,9 +36,7 @@ const App: React.FC = () => {
                         <FontContextProvider>
                             <StatusBar barStyle="default" />
                             <Splash>
-                                <NavigationContainer>
-                                    <RootStackNavigator />
-                                </NavigationContainer>
+                                <AppWrapper />
                             </Splash>
                         </FontContextProvider>
                     </AppContextProvider>
