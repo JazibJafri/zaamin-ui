@@ -30,6 +30,17 @@ const asyncTasksMiddleware: Middleware = ({
             }),
         );
     }
+    if (type.includes('rejected')) {
+        // handle errors but separate middleware
+        dispatch(
+            applicationActions.toggleErrorMessage({
+                show: true,
+                title: action.type,
+                //@ts-ignore
+                content: action.error.message,
+            }),
+        );
+    }
     return next(action);
 };
 
