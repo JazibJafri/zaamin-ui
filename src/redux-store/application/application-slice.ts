@@ -2,22 +2,33 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { applicationSliceName } from './application-constants';
 
 type AsyncTask = { type: string };
+type ErrorMessage = {
+    show: boolean;
+    title: string;
+    content: string;
+};
 
 type ApplicationSliceState = {
     asyncTasks: AsyncTask[];
+    error: ErrorMessage;
 };
 const initialState: ApplicationSliceState = {
     asyncTasks: [],
+    error: {
+        show: false,
+        title: '',
+        content: '',
+    },
 };
 
 const applicationSlice = createSlice({
     name: applicationSliceName,
     initialState,
     reducers: {
-        addAsyncTaskAction: (state, action: PayloadAction<AsyncTask>) => {
+        addAsyncTask: (state, action: PayloadAction<AsyncTask>) => {
             state.asyncTasks.push(action.payload);
         },
-        removeAsyncTaskAction: (state, action: PayloadAction<AsyncTask>) => {
+        removeAsyncTask: (state, action: PayloadAction<AsyncTask>) => {
             let filtered = 0;
             const asyncTasks = state.asyncTasks.filter(task => {
                 if (filtered === 0) {
@@ -29,6 +40,9 @@ const applicationSlice = createSlice({
                 return true;
             });
             return { ...state, asyncTasks };
+        },
+        toggleErrorMessage: (state, action: PayloadAction<ErrorMessage>) => {
+            state.error = action.payload;
         },
     },
 });

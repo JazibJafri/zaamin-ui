@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useReducer } from 'react';
 import { useAppDispatch } from 'redux-store';
-import { ScrollView, Alert } from 'react-native';
+import { ScrollView } from 'react-native';
 import { AppContext } from 'contexts/AppContext';
 import { SignUpFormContainer } from 'containers/SignUpFormContainer';
 import {
@@ -12,6 +12,8 @@ import {
 import { SignUpState } from './SignUpForm.types';
 import { AccountTypes, AppUsageOptions } from 'constants/app';
 import { userAsyncActions } from 'redux-store/user/user-async';
+import { applicationActions } from 'redux-store/application';
+import { INVALID_FORM, PLEASE_VERIFY_ALL_FIELDS } from 'constants/text';
 
 type Props = WithStackNavigation<'SignUpForm'>;
 
@@ -80,7 +82,13 @@ const SignUpForm: React.FC<Props> = ({ navigation, route }) => {
                 }),
             );
         } else {
-            Alert.alert('Invalid Form', 'Please fix all errors');
+            dispatch(
+                applicationActions.toggleErrorMessage({
+                    show: true,
+                    title: INVALID_FORM,
+                    content: PLEASE_VERIFY_ALL_FIELDS,
+                }),
+            );
         }
     };
 
