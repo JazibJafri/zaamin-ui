@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { View, Image, useWindowDimensions, StatusBar } from 'react-native';
 import * as Text from 'constants/text';
-import { AppContext } from 'contexts/AppContext';
 import {
     LoginFormStyles,
     socialButtons,
@@ -23,12 +22,6 @@ type Props = {
 };
 
 const LoginFormContainer: React.FC<Props> = props => {
-    const { setIsAppLoaded } = useContext(AppContext);
-    useEffect(() => {
-        setTimeout(() => {
-            setIsAppLoaded(true);
-        }, 1000);
-    }, []);
     const window = useWindowDimensions();
     const statusBarHeight = StatusBar.currentHeight;
     const screenHeight = getScreenHeight(window, statusBarHeight);

@@ -163,7 +163,11 @@ module.exports = exports = {
         'object-curly-spacing': [ERROR, 'always'],
         'one-var': OFF,
         'operator-assignment': [ERROR, 'always'],
-        'operator-linebreak': [ERROR, 'before'],
+        'operator-linebreak': [
+            ERROR,
+            'after',
+            { overrides: { '?': 'before', ':': 'before' } },
+        ],
         'quote-props': [ERROR, 'consistent-as-needed'],
         'quotes': [OFF, 'single'],
         'semi-spacing': [ERROR, { before: false, after: true }],
