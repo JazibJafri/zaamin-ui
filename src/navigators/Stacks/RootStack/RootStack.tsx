@@ -5,6 +5,7 @@ import { AppUsage } from 'screens/AppUsage';
 import { SignUpForm } from 'screens/SignUpForm';
 import { LoginForm } from 'screens/LoginForm';
 import { Header } from 'components/Header';
+import { transitionSpec, cardStyleInterpolator } from '../stack-styles';
 
 const RootStack = createStackNavigator();
 
@@ -23,6 +24,11 @@ const RootStackNavigator = () => {
                 component={LoginForm}
                 options={{
                     headerShown: false,
+                    transitionSpec: {
+                        open: transitionSpec,
+                        close: transitionSpec,
+                    },
+                    cardStyleInterpolator,
                 }}
             />
             <RootStack.Screen
@@ -30,6 +36,11 @@ const RootStackNavigator = () => {
                 component={SignUpForm}
                 options={{
                     headerShown: false,
+                    transitionSpec: {
+                        open: transitionSpec,
+                        close: transitionSpec,
+                    },
+                    cardStyleInterpolator,
                 }}
             />
             <RootStack.Screen
@@ -37,6 +48,11 @@ const RootStackNavigator = () => {
                 component={AppUsage}
                 options={{
                     headerTitle: () => <Header title="Select Account Type" />,
+                    transitionSpec: {
+                        open: transitionSpec,
+                        close: transitionSpec,
+                    },
+                    cardStyleInterpolator,
                 }}
             />
             <RootStack.Screen
@@ -44,6 +60,11 @@ const RootStackNavigator = () => {
                 component={AccountType}
                 options={{
                     headerTitle: () => <Header title="Select Role Type" />,
+                    transitionSpec: {
+                        open: transitionSpec,
+                        close: transitionSpec,
+                    },
+                    cardStyleInterpolator,
                 }}
             />
         </RootStack.Navigator>
