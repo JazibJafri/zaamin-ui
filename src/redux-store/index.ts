@@ -21,14 +21,23 @@ const asyncTasksMiddleware: Middleware = ({
 }: MiddlewareAPI<AppDispatch>) => next => (action: PayloadAction) => {
     const { type } = action;
     if (type.includes('pending')) {
-        dispatch(
-            applicationActions.addAsyncTaskAction({ type: type.replace('/pending', '') }),
-        );
+        dispatch(applicationActions.addAsyncTask({ type: type.replace('/pending', '') }));
     }
     if (type.includes('fulfilled') || type.includes('rejected')) {
         dispatch(
-            applicationActions.removeAsyncTaskAction({
+            applicationActions.removeAsyncTask({
                 type: type.replace('/fulfilled', '').replace('/rejected', ''),
+            }),
+        );
+    }
+    if (type.includes('rejected')) {
+        // handle errors but separate middleware
+        dispatch(
+            applicationActions.toggleErrorMessage({
+                show: true,
+                title: action.type,
+                //@ts-ignore
+                content: action.error.message,
             }),
         );
     }

@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { ScrollView, Alert } from 'react-native';
+import { ScrollView } from 'react-native';
 import { useAppDispatch } from 'redux-store';
 import { LoginFormContainer } from 'containers/LoginFormContainer';
 import { LoginState } from './LoginForm.types';
@@ -10,6 +10,8 @@ import {
     LOGIN_ACTIONS,
 } from './LoginForm.reducer';
 import { userAsyncActions } from 'redux-store/user/user-async';
+import { applicationActions } from 'redux-store/application';
+import { INVALID_FORM, PLEASE_VERIFY_ALL_FIELDS } from 'constants/text';
 
 type Props = WithStackNavigation<'LoginForm'>;
 
@@ -39,7 +41,13 @@ const LoginForm: React.FC<Props> = ({ navigation }) => {
             const { email, password } = state;
             dispatch(userAsyncActions.login({ email, password }));
         } else {
-            Alert.alert('Invalid Form', 'Please fix all errors');
+            dispatch(
+                applicationActions.toggleErrorMessage({
+                    show: true,
+                    title: INVALID_FORM,
+                    content: PLEASE_VERIFY_ALL_FIELDS,
+                }),
+            );
         }
     };
 
