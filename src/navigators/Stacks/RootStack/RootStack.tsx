@@ -4,7 +4,7 @@ import { AccountType } from 'screens/AccountType';
 import { AppUsage } from 'screens/AppUsage';
 import { SignUpForm } from 'screens/SignUpForm';
 import { LoginForm } from 'screens/LoginForm';
-import { SinglePrompt } from 'screens/SinglePrompt';
+import { SPMap } from 'screens/SPMap';
 import { Header } from 'components/Header';
 import { transitionSpec, cardStyleInterpolator } from '../stack-styles';
 
@@ -16,7 +16,7 @@ type Props = {
 };
 
 const RootStackNavigator: React.FC<Props> = ({ isLoggedIn, didJustSignedUp }) => {
-    const showSinglePrompt = isLoggedIn && didJustSignedUp;
+    const showSinglePrompts = isLoggedIn && didJustSignedUp;
     return (
         <RootStack.Navigator
             initialRouteName="LoginForm"
@@ -26,7 +26,7 @@ const RootStackNavigator: React.FC<Props> = ({ isLoggedIn, didJustSignedUp }) =>
                 },
             }}
         >
-            {!showSinglePrompt ? (
+            {!showSinglePrompts ? (
                 <>
                     <RootStack.Screen
                         name="LoginForm"
@@ -79,8 +79,8 @@ const RootStackNavigator: React.FC<Props> = ({ isLoggedIn, didJustSignedUp }) =>
                 </>
             ) : (
                 <RootStack.Screen
-                    name="SinglePrompt"
-                    component={SinglePrompt}
+                    name="SPMap"
+                    component={SPMap}
                     options={{
                         headerTitle: () => <Header title="Save your address" />,
                         transitionSpec: {
