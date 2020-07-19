@@ -20,7 +20,6 @@ const SPMap = () => {
     const { appUsage, accountType } = useSelector(
         (state: RootState) => state.userReducer,
     );
-    console.log('Ac', appUsage, accountType);
     const [locationPermission, setLocationPermission] = useState<PermissionResults>(
         'to_be_requested',
     );
@@ -72,7 +71,6 @@ const SPMap = () => {
         if (locationPermission === 'granted') {
             handleLocationGranted();
         } else if (locationPermission === 'denied') {
-            console.log('Called');
             handleLocationDenied();
         } else if (locationPermission === 'never_ask_again') {
             handleLocationBlocked();
