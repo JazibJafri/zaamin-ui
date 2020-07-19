@@ -6,6 +6,7 @@ type ErrorMessage = {
     show: boolean;
     title: string;
     content: string;
+    onClose?: 'default' | 'exit-app';
 };
 
 type ApplicationSliceState = {
@@ -18,6 +19,7 @@ const initialState: ApplicationSliceState = {
         show: false,
         title: '',
         content: '',
+        onClose: 'default',
     },
 };
 

@@ -16,7 +16,7 @@ type Props = {
 };
 
 const RootStackNavigator: React.FC<Props> = ({ isLoggedIn, didJustSignedUp }) => {
-    const showSinglePrompts = isLoggedIn && didJustSignedUp;
+    const isNewUser = didJustSignedUp;
     return (
         <RootStack.Navigator
             initialRouteName="LoginForm"
@@ -26,7 +26,7 @@ const RootStackNavigator: React.FC<Props> = ({ isLoggedIn, didJustSignedUp }) =>
                 },
             }}
         >
-            {!showSinglePrompts ? (
+            {!isLoggedIn && (
                 <>
                     <RootStack.Screen
                         name="LoginForm"
@@ -77,7 +77,8 @@ const RootStackNavigator: React.FC<Props> = ({ isLoggedIn, didJustSignedUp }) =>
                         }}
                     />
                 </>
-            ) : (
+            )}
+            {isLoggedIn && isNewUser && (
                 <RootStack.Screen
                     name="SPMap"
                     component={SPMap}
@@ -91,6 +92,7 @@ const RootStackNavigator: React.FC<Props> = ({ isLoggedIn, didJustSignedUp }) =>
                     }}
                 />
             )}
+            {isLoggedIn && !isNewUser && <></>}
         </RootStack.Navigator>
     );
 };
