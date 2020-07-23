@@ -136,7 +136,7 @@ module.exports = exports = {
         'id-length': [ERROR, { min: 2, max: 32 }],
         'indent': [OFF, 4],
         'jsx-quotes': [ERROR, 'prefer-double'],
-        'linebreak-style': [ERROR, 'windows'],
+        'linebreak-style': OFF,
         'lines-around-comment': [OFF, { beforeBlockComment: true }],
         'max-depth': [ERROR, 4],
         'max-len': [ERROR, { code: 90, ignoreUrls: true }],
