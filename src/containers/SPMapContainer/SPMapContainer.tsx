@@ -4,8 +4,8 @@ import { SPMapContainerStyles, searchResultBackButton } from './SPMapContainer.s
 import { RegularInput } from 'components/RegularInput';
 import { Map } from 'components/Map';
 import { Button } from 'components/Button';
-import { RegularText } from 'components/RegularText';
 import { Region } from 'react-native-maps';
+import { MapPlacesList } from 'components/MapPlacesList';
 
 interface Props {
     showSearchResults: () => void;
@@ -41,7 +41,7 @@ const SPMapContainer: React.FC<Props> = props => {
                         buttonStyle={searchResultBackButton}
                         onPress={() => props.hideSearchResults()}
                     />
-                    <RegularText>Type to search places</RegularText>
+                    <MapPlacesList />
                 </Animated.View>
             </View>
         </View>

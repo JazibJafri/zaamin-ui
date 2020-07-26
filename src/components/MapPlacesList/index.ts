@@ -1,0 +1,1 @@
+export { MapPlacesList } from './MapPlacesList';
