@@ -11,7 +11,7 @@ import { validators, Validators } from 'util/validators';
 import { RegularText } from 'components/RegularText';
 
 interface OwnProps extends TextInputProps {
-    validators: Validators[];
+    validators?: Validators[];
     onChangeText: (val: string, err?: boolean) => void;
     validateOn?: 'start-editing' | 'end-editing';
 }
@@ -20,25 +20,31 @@ const RegularInput: React.FC<OwnProps> = ({
     style,
     onChangeText,
     value,
-    validators: validatorTypes,
+    validators: validatorTypes = [],
     validateOn = 'end-editing',
     ...rest
 }) => {
     const [hasError, setHasError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const validateInput = (val: string) => {
-        const validations = validatorTypes.map(type => {
-            const currentValidator = validators[type];
-            return currentValidator(val);
-        });
-        const result = validations.reduce((prev, cur) => {
-            /* return failed validation if any one validation fails */
-            return {
-                result: prev.result && cur.result,
-                reason: !prev.result ? prev.reason : cur.reason,
-            };
-        });
-        return result;
+        if (validatorTypes.length) {
+            const validations = validatorTypes.map(type => {
+                const currentValidator = validators[type];
+                return currentValidator(val);
+            });
+            const result = validations.reduce((prev, cur) => {
+                /* return failed validation if any one validation fails */
+                return {
+                    result: prev.result && cur.result,
+                    reason: !prev.result ? prev.reason : cur.reason,
+                };
+            });
+            return result;
+        }
+        return {
+            result: true,
+            reason: '',
+        };
     };
     const handleSuccess = () => {
         setHasError(false);

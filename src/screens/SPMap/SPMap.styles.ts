@@ -1,15 +1,51 @@
 import { StyleSheet } from 'react-native';
 import { globalStyles } from 'styles/app.styles';
+import { colors, logoColors } from 'styles/constant.styles';
 
 const { border, centerContent } = globalStyles;
 
 export const SPMapStyles = StyleSheet.create({
     container: {
-        // ...border,
+        borderBottomWidth: 1,
+        borderBottomColor: logoColors.blue,
+        elevation: 5,
     },
-    mapView: {
+    searchView: {
         // ...border,
+        marginHorizontal: 10,
+        marginTop: 10,
+    },
+    mapSearchInput: {},
+    mapView: {
+        ...border,
+        height: 300,
+    },
+    map: {
+        // ...border,
+        margin: 10,
         width: 'auto',
-        height: 200,
+        flexGrow: 1,
+    },
+    searchResults: {
+        ...border,
+        // width: '100%',
+        // height: '100%',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    },
+    searchResultBackButton: {
+        ...border,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 40,
+        backgroundColor: logoColors.orange,
     },
 });
+
+export const searchResultBackButton = {
+    button: SPMapStyles.searchResultBackButton,
+};

@@ -26,3 +26,10 @@ declare type HandleStateChange<S = {}> = (
 ) => void;
 
 declare type HandleSubmit = () => void;
+
+declare type ErrorMessage = {
+    show: boolean;
+    title: string;
+    content: string;
+    onClose?: 'default' | 'exit-app';
+};

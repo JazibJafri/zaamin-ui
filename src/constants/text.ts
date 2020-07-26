@@ -19,3 +19,5 @@ export const ERROR_LOCATION_PERMISSIONS =
 export const LOCATION_IS_NECESSARY = 'Location is neccessary';
 export const LOCATION_IS_REQUIRED =
     'Location persmissions are necessary for the usage of this application';
+export const MAKE_SURE_LOCATION_IS_ON =
+    'Please make sure location services are turned on';

@@ -2,8 +2,8 @@ import { ViewStyle, ImageStyle, TextStyle, StyleProp, TextProps } from 'react-na
 
 declare global {
     interface ButtonProps {
-        onPress: () => unknown;
-        title: string;
+        onPress?: () => unknown;
+        title?: string;
         buttonStyle?: {
             button?: ViewStyle;
             title?: TextStyle;

@@ -2,12 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { applicationSliceName } from './application-constants';
 
 type AsyncTask = { type: string };
-type ErrorMessage = {
-    show: boolean;
-    title: string;
-    content: string;
-    onClose?: 'default' | 'exit-app';
-};
 
 type ApplicationSliceState = {
     asyncTasks: AsyncTask[];
