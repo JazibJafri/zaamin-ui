@@ -10,7 +10,7 @@ export const SinglePromptStyles = StyleSheet.create({
         flex: 1,
     },
     topHalfView: {
-        ...border,
+        // ...border,
         // flex: 2,
     },
     topHalfViewContent: {
@@ -19,7 +19,7 @@ export const SinglePromptStyles = StyleSheet.create({
         marginHorizontal: 10,
     },
     bottomHalfView: {
-        ...border,
+        // ...border,
         flex: 1,
         justifyContent: 'center',
     },

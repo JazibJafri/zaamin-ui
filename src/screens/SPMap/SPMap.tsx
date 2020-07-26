@@ -1,31 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    View,
     PermissionsAndroid,
     PermissionStatus,
     Animated,
-    NativeSyntheticEvent,
     useWindowDimensions,
-    TextInputKeyPressEventData,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-import { SPMapStyles, searchResultBackButton } from './SPMap.styles';
-import { SinglePrompt } from 'screens/SinglePrompt';
-import MapView, { Region } from 'react-native-maps';
+import { SinglePrompt } from 'components/SinglePrompt';
+import { Region } from 'react-native-maps';
 import { useAppDispatch } from 'redux-store';
 import { applicationActions } from 'redux-store/application';
 import Geolocation from 'react-native-geolocation-service';
-import {
-    UNABLE_TO_GET_LOCATION,
-    ERROR_LOCATION_PERMISSIONS,
-    LOCATION_IS_NECESSARY,
-    LOCATION_IS_REQUIRED,
-    MAKE_SURE_LOCATION_IS_ON,
-} from 'constants/text';
+import * as Text from 'constants/text';
 import { AppUsageOptions, AccountTypes } from 'constants/app';
-import { RegularInput } from 'components/RegularInput';
-import { RegularText } from 'components/RegularText';
-import { Button } from 'components/Button';
+import { SPMapContainer } from 'containers/SPMapContainer';
 
 type PermissionResults = PermissionStatus | 'to_be_requested';
 
@@ -88,8 +76,8 @@ const SPMap = () => {
         } catch (err) {
             showMessage({
                 show: true,
-                title: UNABLE_TO_GET_LOCATION,
-                content: ERROR_LOCATION_PERMISSIONS,
+                title: Text.UNABLE_TO_GET_LOCATION,
+                content: Text.ERROR_LOCATION_PERMISSIONS,
             });
         }
     };
@@ -107,8 +95,8 @@ const SPMap = () => {
             error => {
                 showMessage({
                     show: true,
-                    title: UNABLE_TO_GET_LOCATION,
-                    content: MAKE_SURE_LOCATION_IS_ON,
+                    title: Text.UNABLE_TO_GET_LOCATION,
+                    content: Text.MAKE_SURE_LOCATION_IS_ON,
                 });
             },
             {
@@ -127,8 +115,8 @@ const SPMap = () => {
         if (isPicnicUsage || isTransporter) {
             showMessage({
                 show: true,
-                title: LOCATION_IS_NECESSARY,
-                content: LOCATION_IS_REQUIRED,
+                title: Text.LOCATION_IS_NECESSARY,
+                content: Text.LOCATION_IS_REQUIRED,
                 onClose: 'exit-app',
             });
         }
@@ -151,38 +139,14 @@ const SPMap = () => {
 
     return (
         <SinglePrompt>
-            <View style={SPMapStyles.container}>
-                <View style={SPMapStyles.searchView}>
-                    <RegularInput
-                        onChangeText={val => setSearchValue(val)}
-                        onKeyPress={showSearchResults}
-                        value={searchValue}
-                        style={SPMapStyles.mapSearchInput}
-                        placeholder="Search"
-                    />
-                </View>
-                <View style={SPMapStyles.mapView}>
-                    <MapView
-                        style={SPMapStyles.map}
-                        showsUserLocation={true}
-                        showsMyLocationButton={false}
-                        region={region}
-                    />
-                    <Animated.View
-                        style={[
-                            SPMapStyles.searchResults,
-                            { transform: [{ translateX }] },
-                        ]}
-                    >
-                        <Button
-                            icon={{ name: 'arrow-back', size: 20 }}
-                            buttonStyle={searchResultBackButton}
-                            onPress={() => hideSearchResults()}
-                        />
-                        <RegularText>Type to search places</RegularText>
-                    </Animated.View>
-                </View>
-            </View>
+            <SPMapContainer
+                hideSearchResults={hideSearchResults}
+                region={region}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                showSearchResults={showSearchResults}
+                translateX={translateX}
+            />
         </SinglePrompt>
     );
 };
