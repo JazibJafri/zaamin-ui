@@ -7,7 +7,7 @@ const { login, signUp } = userAsyncActions;
 
 type UserSliceState = {
     isLoggedIn: boolean;
-    didJustSignedUp: boolean;
+    isNewUser: boolean;
     appUsage: AppUsageOptions;
     accountType: AccountTypes;
     email: string;
@@ -21,7 +21,7 @@ type UserSliceState = {
 
 const initialState: UserSliceState = {
     isLoggedIn: false,
-    didJustSignedUp: true,
+    isNewUser: true,
     accountType: AccountTypes.PARENT,
     appUsage: AppUsageOptions.SCHOOL,
     branchName: '',
@@ -52,7 +52,7 @@ const userSlice = createSlice({
             return {
                 ...state,
                 isLoggedIn: true,
-                didJustSignedUp: true,
+                isNewUser: true,
                 ...action.payload,
             };
         });

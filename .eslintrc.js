@@ -32,6 +32,7 @@ module.exports = exports = {
         'no-unexpected-multiline': ERROR,
         '@typescript-eslint/ban-ts-ignore': OFF,
         'react-hooks/exhaustive-deps': OFF,
+        'prettier/prettier': OFF,
 
         // Best Practices
 
@@ -136,7 +137,7 @@ module.exports = exports = {
         'id-length': [ERROR, { min: 2, max: 32 }],
         'indent': [OFF, 4],
         'jsx-quotes': [ERROR, 'prefer-double'],
-        'linebreak-style': [ERROR, 'windows'],
+        'linebreak-style': [ERROR, 'unix'],
         'lines-around-comment': [OFF, { beforeBlockComment: true }],
         'max-depth': [ERROR, 4],
         'max-len': [ERROR, { code: 90, ignoreUrls: true }],
