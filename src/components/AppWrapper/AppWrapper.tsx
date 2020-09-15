@@ -20,15 +20,15 @@ const AppWrapper: React.FC = () => {
         (state: RootState) => state.applicationReducer.error.show,
     );
     const isLoggedIn = useSelector((state: RootState) => state.userReducer.isLoggedIn);
-    const didJustSignedUp = useSelector(
-        (state: RootState) => state.userReducer.didJustSignedUp,
+    const isNewUser = useSelector(
+        (state: RootState) => state.userReducer.isNewUser,
     );
     return (
         <>
             <NavigationContainer>
                 <RootStackNavigator
                     isLoggedIn={isLoggedIn}
-                    didJustSignedUp={didJustSignedUp}
+                    isNewUser={isNewUser}
                 />
             </NavigationContainer>
             {asyncTasks.length > 0 && <Loader />}

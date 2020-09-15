@@ -12,11 +12,10 @@ const RootStack = createStackNavigator();
 
 type Props = {
     isLoggedIn: boolean;
-    didJustSignedUp: boolean;
+    isNewUser: boolean;
 };
 
-const RootStackNavigator: React.FC<Props> = ({ isLoggedIn, didJustSignedUp }) => {
-    const isNewUser = didJustSignedUp;
+const RootStackNavigator: React.FC<Props> = ({ isLoggedIn, isNewUser }) => {
     return (
         <RootStack.Navigator
             initialRouteName="LoginForm"
