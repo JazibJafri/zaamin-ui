@@ -7,7 +7,6 @@ import {
     TouchableOpacityProps,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 /* Absolute Imports */
 import { globalStyles } from 'styles/app.styles';
 import { RegularText } from 'components/RegularText';
@@ -42,9 +41,11 @@ const Button: React.FC<Props> = ({
             style={button}
             onPressOut={() => dismissKeyboard && Keyboard.dismiss()}
         >
-            <RegularText style={caption} {...rest}>
-                {title}
-            </RegularText>
+            {title && (
+                <RegularText style={caption} {...rest}>
+                    {title}
+                </RegularText>
+            )}
             {myIcon && <View style={icon?.style}>{myIcon}</View>}
         </TouchableOpacity>
     );

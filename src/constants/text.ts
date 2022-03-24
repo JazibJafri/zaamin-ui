@@ -13,3 +13,11 @@ export const INVALID_PASSWORD = `Password must be atleast 8 characters long and 
 - 1 number `;
 export const INVALID_FORM = 'Invalid form';
 export const PLEASE_VERIFY_ALL_FIELDS = 'Please verify all fields';
+export const UNABLE_TO_GET_LOCATION = 'Unable to get location';
+export const ERROR_LOCATION_PERMISSIONS =
+    'There was an error getting location persmissions';
+export const LOCATION_IS_NECESSARY = 'Location is neccessary';
+export const LOCATION_IS_REQUIRED =
+    'Location persmissions are necessary for the usage of this application';
+export const MAKE_SURE_LOCATION_IS_ON =
+    'Please make sure location services are turned on';

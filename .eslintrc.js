@@ -32,6 +32,7 @@ module.exports = exports = {
         'no-unexpected-multiline': ERROR,
         '@typescript-eslint/ban-ts-ignore': OFF,
         'react-hooks/exhaustive-deps': OFF,
+        'prettier/prettier': OFF,
 
         // Best Practices
 
@@ -163,7 +164,11 @@ module.exports = exports = {
         'object-curly-spacing': [ERROR, 'always'],
         'one-var': OFF,
         'operator-assignment': [ERROR, 'always'],
-        'operator-linebreak': [ERROR, 'after'],
+        'operator-linebreak': [
+            ERROR,
+            'after',
+            { overrides: { '?': 'before', ':': 'before' } },
+        ],
         'quote-props': [ERROR, 'consistent-as-needed'],
         'quotes': [OFF, 'single'],
         'semi-spacing': [ERROR, { before: false, after: true }],

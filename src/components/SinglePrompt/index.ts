@@ -1,0 +1,1 @@
+export { SinglePrompt } from './SinglePrompt';

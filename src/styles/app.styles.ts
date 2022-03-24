@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors } from './constant.styles';
+import { colors, logoColors } from './constant.styles';
 
 export const globalStyles = StyleSheet.create({
     centerContent: {
@@ -36,11 +36,13 @@ export const globalStyles = StyleSheet.create({
         borderColor: 'red',
     },
     defaultInput: {
-        borderWidth: 2,
-        borderColor: colors.black,
-        paddingVertical: 0,
+        borderWidth: 1,
+        borderColor: logoColors.blue,
         fontFamily: 'Oswald-Medium',
         fontSize: 15,
+        borderRadius: 5,
+        paddingLeft: 10,
+        paddingVertical: 2,
     },
     defaultError: {
         borderColor: colors.red,

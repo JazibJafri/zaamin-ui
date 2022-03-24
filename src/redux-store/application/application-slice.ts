@@ -2,11 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { applicationSliceName } from './application-constants';
 
 type AsyncTask = { type: string };
-type ErrorMessage = {
-    show: boolean;
-    title: string;
-    content: string;
-};
 
 type ApplicationSliceState = {
     asyncTasks: AsyncTask[];
@@ -18,6 +13,7 @@ const initialState: ApplicationSliceState = {
         show: false,
         title: '',
         content: '',
+        onClose: 'default',
     },
 };
 

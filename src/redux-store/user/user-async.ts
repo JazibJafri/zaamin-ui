@@ -19,12 +19,20 @@ interface SignUpPayload extends SignUpFormData {
     accountType: AccountTypes;
 }
 
-const signUp = createAsyncThunk(urls.signUp, async (payload: SignUpPayload) => {
-    const response = await request({
-        url: API_URLS.USER.signUp,
-        options: { body: payload, method: 'POST' },
-    });
-    return response;
+const signUp = createAsyncThunk<
+    SignUpPayload,
+    SignUpPayload,
+    { rejectValue: SignUpPayload }
+>(urls.signUp, async (payload: SignUpPayload, { rejectWithValue }) => {
+    try {
+        const response = await request({
+            url: API_URLS.USER.signUp,
+            options: { body: payload, method: 'POST' },
+        });
+        return payload;
+    } catch (err) {
+        return rejectWithValue(payload);
+    }
 });
 
 export const userAsyncActions = {

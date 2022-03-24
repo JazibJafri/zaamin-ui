@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'redux-store';
-import { View, useWindowDimensions, StatusBar } from 'react-native';
+import { View, useWindowDimensions, StatusBar, BackHandler } from 'react-native';
 import { getScreenHeight } from 'util/helpers';
 import { MessageStyles, messageViewButton } from './Message.styles';
 import { RegularText } from 'components/RegularText';
@@ -10,7 +10,7 @@ import { Button } from 'components/Button';
 import { applicationActions } from 'redux-store/application';
 
 const Message: React.FC = () => {
-    const { title, content } = useSelector(
+    const { title, content, onClose } = useSelector(
         (state: RootState) => state.applicationReducer.error,
     );
     const dispatch = useAppDispatch();
@@ -19,6 +19,19 @@ const Message: React.FC = () => {
     const statusBarHeight = StatusBar.currentHeight;
     const screenHeight = getScreenHeight(window, statusBarHeight);
     const { toggleErrorMessage } = applicationActions;
+
+    const handleClose = () => {
+        dispatch(
+            toggleErrorMessage({
+                show: false,
+                content: '',
+                title: '',
+            }),
+        );
+        if (onClose === 'exit-app') {
+            BackHandler.exitApp();
+        }
+    };
     return (
         <View style={[MessageStyles.container, { height: screenHeight, width }]}>
             <View
@@ -41,15 +54,7 @@ const Message: React.FC = () => {
                 <View style={MessageStyles.messageViewButton}>
                     <Button
                         title={OKAY}
-                        onPress={() =>
-                            dispatch(
-                                toggleErrorMessage({
-                                    show: false,
-                                    content: '',
-                                    title: '',
-                                }),
-                            )
-                        }
+                        onPress={handleClose}
                         buttonStyle={messageViewButton}
                     />
                 </View>
