@@ -34,7 +34,7 @@
         "node-sass": "^4.14.1",
         "patch-package": "^6.2.2",
         "react": "16.11.0",
-        "react-native": "0.62.2",
+        "react-native": "0.62.3",
         "react-native-animated-splash-screen": "^2.0.3",
         "react-native-config": "^1.0.0",
         "react-native-geolocation-service": "^5.0.0",
